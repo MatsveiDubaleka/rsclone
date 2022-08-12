@@ -2,7 +2,7 @@
   "name": "rsclone",
   "version": "0.0.1",
   "description": "RSClone provides information about films, television series, including frames, trailers, posters, wallpapers, as well as data on persons associated with film and television production: actors, directors, producers, screenwriters, cameramen, composers, artists and editors.",
-  "main": "index.js",
+  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatsveiDubaleka/rsclone.git"
