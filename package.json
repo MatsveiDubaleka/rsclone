@@ -1,0 +1,29 @@
+{
+  "name": "rsclone",
+  "version": "0.0.1",
+  "description": "RSClone provides information about films, television series, including frames, trailers, posters, wallpapers, as well as data on persons associated with film and television production: actors, directors, producers, screenwriters, cameramen, composers, artists and editors.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatsveiDubaleka/rsclone.git"
+  },
+  "keywords": [
+    "rsclone",
+    "kinopoisk",
+    "react",
+    "typescript",
+    "scss",
+    "jest",
+    "axios",
+    "mongodb"
+  ],
+  "author": "Uladzislau Kutarkin, Vera Krasnova, Pavel Priladyshev, Matsvei Dubaleka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatsveiDubaleka/rsclone/issues"
+  },
+  "homepage": "https://github.com/MatsveiDubaleka/rsclone#readme"
+}
