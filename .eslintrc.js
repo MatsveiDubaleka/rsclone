@@ -2,7 +2,7 @@ module.exports = {
     "env": {
         "browser": true,
         "es2021": true,
-        "node": true
+        "node": true,
     },
     "extends": [
         "eslint:recommended",
@@ -17,6 +17,11 @@ module.exports = {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "settings": {
+        "react": {
+          "version": "18.2.0"
+        }
+      },
     "plugins": [
         "react",
         "@typescript-eslint"
