@@ -1,8 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-
-import React from "react";
 import { screen, render } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect'
 
@@ -15,6 +13,6 @@ const renderApp = () => {
 describe("App", () => {
   it("should show test text", () => {
     renderApp();
-    expect(screen.getByText("Test text")).toBeVisible();
+    expect(screen.getByText(/kinopoisk/i)).toBeVisible();
   });
 });
