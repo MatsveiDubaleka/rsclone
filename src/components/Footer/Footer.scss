@@ -1,0 +1,42 @@
+@import '../Header/Header.scss';
+
+// COLORS
+$footerLinksColor: rgba(255, 255, 255, 0.4);
+
+//FONTS
+$footerFontSize: 16px;
+
+.footer-wrapper {
+  @include wrapper();
+}
+
+footer {
+  width: 1280px;
+  height: 110px;
+  background: $headerBackground;
+  color: $footerLinksColor;
+  font-size: $footerFontSize;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+a {
+  text-decoration: none;
+}
+
+.git-links {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.git-links_link {
+  color: $footerLinksColor;
+}
+
+.git-links_link:hover {
+  color: $searchPlaceholderColorFocus;
+}

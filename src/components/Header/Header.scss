@@ -3,7 +3,7 @@ $headerBackground: #1F1F1F;
 $searchBackground: #3e3e3e;
 $searchPlaceholderColor: #b4b4b4;
 $searchPlaceholderColorFocus: #f2f2f2;
-$buttonBackground: #D9D9D9;
+$lightGrey: #D9D9D9;
 
 //FONTS
 $searchFont: Arial;
@@ -21,14 +21,26 @@ $searchFont: Arial;
   cursor: pointer;
 }
 
-header {
+@mixin wrapper {
   width: 100%;
+  background: $headerBackground;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.header-wrapper {
+  @include wrapper();
+}
+
+header {
+  width: 1280px;
   height: 70px;
   background: $headerBackground;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 h1 {
@@ -114,19 +126,24 @@ h1 {
   @include backgroundRules();
 }
 
-.plus-btn{
-  font-size: 12px;
-  width: 102px;
-  height: 42px;
-  border-radius: 5px;
-  background-color: $buttonBackground;
-  cursor: pointer;
-}
-
 .avatar-btn{
   width: 32px;
   height: 32px;
   border-radius: 25px;
   background-image: url('../../assets/icons/avatar.svg');
   @include backgroundRules();
+}
+
+.enter-link{
+  display: flex;
+  align-items: center;
+  font-family: $searchFont;
+  font-size: 14px;
+  font-weight: 700;
+  color: $searchPlaceholderColor;
+  cursor: pointer;
+}
+
+.enter-link:hover{
+  color: $lightGrey;
 }
