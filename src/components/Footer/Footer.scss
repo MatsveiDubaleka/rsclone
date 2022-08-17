@@ -40,10 +40,3 @@ a {
 .git-links_link:hover {
   color: $searchPlaceholderColorFocus;
 }
-
-.rs-link {
-  width: 200px;
-  height: 80px;
-  background-image: url('../../assets/img/rs_school_js.svg');
-  @include backgroundRules();
-}

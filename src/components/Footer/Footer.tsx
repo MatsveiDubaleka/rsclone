@@ -13,9 +13,7 @@ const Footer = () => {
           <a className="git-links_link" href="https://github.com/VerchkaFeya">Vera Krasnova</a>
           <a className="git-links_link" href="https://github.com/aibolit666">Pavel Priladyshev</a>
         </div>
-        <div className="rs-link">
-          <a href="https://rs.school/"></a>
-        </div>
+          <a className="git-links_link" href="https://rs.school/">RS School</a>
       </footer>
     </div>
   );
