@@ -1,0 +1,81 @@
+@import '../Header/Header.scss';
+
+// COLORS
+$buttonColor: #FF6600;
+$borderColor: #777777;
+$cardBackground: #FFFFFF;
+
+// FONTS
+$inputFontSize: 18px;
+
+@mixin buttonSizes {
+  box-sizing: border-box;
+  border: none;
+  width: 300px;
+  height: 54px;
+  border-radius: 10px;
+}
+
+.authorization-wrapper {
+  @include wrapper();
+  background-image: url('../../assets/img/authorization-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.authorization {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1440px;
+  height: 1024px;
+}
+
+.authorization-card {
+  border-radius: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 19px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  height: 600px;
+  background: $cardBackground;
+
+
+  &__logo-img {
+    width: 50px;
+    height: 50px;
+    background-image: url('../../assets/icons/logo-auth.png');
+    background-repeat: no-repeat;
+    margin-bottom: 13px;
+  }
+
+  &__tooltip {
+    font-size: 16px;
+    margin-bottom: 31px;
+  }
+
+  &__input {
+    @include buttonSizes();
+    font-size: $inputFontSize;
+    border: 1px solid $borderColor;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 24px;
+  }
+
+  .password-auth {
+    margin-bottom: 65px;
+  }
+
+  &__button-auth {
+    @include buttonSizes();
+    background-color: $buttonColor;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+}
