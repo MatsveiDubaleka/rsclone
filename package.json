@@ -35,7 +35,8 @@
     "eject": "react-scripts eject",
     "jest": "jest",
     "husky-install": "husky install",
-    "lint": "eslint src --color"
+    "lint": "eslint src --color",
+    "dev": "nodemon controller"
   },
   "jest": {
     "setupFilesAfterEnv": [
