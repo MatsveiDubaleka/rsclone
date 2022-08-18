@@ -1,6 +1,6 @@
 export interface IMovieCard {
-	title: string,
-	imgUrl: string,
+	nameRu: string,
+	posterUrlPreview: string,
 	year: number,
 	genre: string,
 	rating: number
