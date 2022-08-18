@@ -43,3 +43,4 @@ const DropdownList = ({movies} : IDropdownMovieList) => {
 }
 
 export default DropdownList;
+
