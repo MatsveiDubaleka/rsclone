@@ -5,6 +5,7 @@ const Authorization = () => {
     <div className="authorization-wrapper">
       <div className="authorization">
         <div className="authorization-card">
+          <button className="authorization-card__button-back"></button>
           <div className="authorization-card__logo-img"></div>
           <span className="authorization-card__tooltip">Войдите или зарегестрируйтесь</span>
           <form action="">
