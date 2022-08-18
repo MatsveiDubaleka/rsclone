@@ -1,3 +1,3 @@
-import './server/db/config'
+import {start} from "./server/db/config.js";
 
-console.log('wassup dude');
+start().then(r => console.log(r));
