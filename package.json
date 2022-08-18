@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.5.2",
+    "nodemon": "^2.0.19"
+  },
+  "name": "rsclone",
+  "description": "Implementation of the basic functionality of Kinopoisk: search, information about films, viewing reviews, compiling lists - User authorization - Basic work with the movie search API to receive all information - Movie search / sorting - Ability to select movies in the \"Will watch\" list - Ability to rate (automatic addition to the list viewed) - Recording the history of viewing (a list of what was viewed in your account) - Possibility to write your own review of the film (under probably) - Responsive/responsive",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatsveiDubaleka/rsclone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatsveiDubaleka/rsclone/issues"
+  },
+  "homepage": "https://github.com/MatsveiDubaleka/rsclone#readme"
+}
