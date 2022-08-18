@@ -1,0 +1,107 @@
+$color-positive: #3BB33B;
+$color-neutral: #777777;
+$color-negative: #FF0000;
+$color-brand: #f60;
+$color-text-title: #000;
+$color-text: rgba(0, 0, 0, 0.4);
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.movie-card {
+
+	width: 140px;
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
+
+	&__poster {
+		position: relative;
+	}
+
+	&__image {
+		width: 140px;
+		height: 210px;
+		border-radius: 4px;
+		background-size: cover;
+		background-position: left;
+		background-repeat: no-repeat;
+		position: relative;
+
+		&::after {
+			content: "";
+			opacity: 0;
+			transition: opacity 0.3s ease-in-out;
+		}
+	}
+
+	&__rating {
+		position: absolute;
+		top: 4px;
+		left: -6px;
+		width: 32px;
+		height: 20px;
+		color: #fff;
+		font-weight: 700;
+		font-size: 10px;
+		line-height: 20px;
+		border-radius: 2px;
+
+		&.positive {
+			background-color: $color-positive;
+		}
+
+		&.neutral {
+			background-color: $color-neutral;
+		}
+
+		&.negative {
+			background-color: #FF0000;
+		}
+	}
+
+	&__title {
+		color: $color-text-title;
+		font-weight: 700;
+		font-size: 13px;
+		line-height: 25px;
+		text-align: left;
+		transition: 0.3s;
+	}
+
+	&__info {
+		color: $color-text;
+		font-size: 13px;
+		line-height: 18px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	&:hover {
+
+		.movie-card__image {
+			&::after {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 100%;
+				border-radius: 4px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: transparent;
+				background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+				opacity: 1;
+			}
+		}
+
+		.movie-card__title {
+			color: $color-brand;
+		}
+
+	}
+
+}
