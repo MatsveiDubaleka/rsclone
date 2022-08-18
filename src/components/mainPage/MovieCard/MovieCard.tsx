@@ -1,7 +1,9 @@
 import "./MovieCard.scss";
 import { IMovieCard } from "./types";
 
-const MovieCard = ({title, imgUrl, year, genre, rating}: IMovieCard) => {
+
+
+const MovieCard = ({nameRu, posterUrlPreview, year, genre, rating}: IMovieCard) => {
 
 	let imgClasses = 'movie-card__rating';
 
@@ -16,10 +18,10 @@ const MovieCard = ({title, imgUrl, year, genre, rating}: IMovieCard) => {
 	return (
 		<div className="movie-card">
 			<div className="movie-card__poster">
-				<div className="movie-card__image" style={{backgroundImage: `url(${imgUrl})`}}></div>
+				<div className="movie-card__image" style={{backgroundImage: `url(${posterUrlPreview})`}}></div>
 				<div className={imgClasses}>{rating}</div>
 			</div>
-			<p className="movie-card__title">{title}</p>
+			<p className="movie-card__title">{nameRu}</p>
 			<div className="movie-card__info">
 				<p className="movie-card__year">{year},</p>
 				<p className="movie-card__genre">{genre}</p>

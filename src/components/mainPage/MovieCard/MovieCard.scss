@@ -48,6 +48,7 @@ $color-text: rgba(0, 0, 0, 0.4);
 		font-size: 10px;
 		line-height: 20px;
 		border-radius: 2px;
+		text-align: center;
 
 		&.positive {
 			background-color: $color-positive;
@@ -66,7 +67,8 @@ $color-text: rgba(0, 0, 0, 0.4);
 		color: $color-text-title;
 		font-weight: 700;
 		font-size: 13px;
-		line-height: 25px;
+		line-height: 18px;
+		margin-top: 5px;
 		text-align: left;
 		transition: 0.3s;
 	}
@@ -93,7 +95,7 @@ $color-text: rgba(0, 0, 0, 0.4);
 				top: 0;
 				left: 0;
 				background: transparent;
-				background-image: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+				background-image: linear-gradient(to left, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25));
 				opacity: 1;
 			}
 		}
