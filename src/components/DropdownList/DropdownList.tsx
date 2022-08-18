@@ -34,7 +34,7 @@ const DropdownList = ({movies} : IDropdownMovieList) => {
 		<div className="dropdown-list">
 			<div className="dropdown-list__movies">
 				{movies.map((movie: IDropdownMovie) : JSX.Element => {
-					return <DropdownMovieItem  nameRu={movie.nameRu} nameEn={movie.nameEn} year={movie.year} rating={movie.rating} posterUrlPreview={movie.posterUrlPreview} key={movie.filmId}></DropdownMovieItem>
+					return <DropdownMovieItem  nameRu={movie.nameRu} nameEn={movie.nameEn} year={movie.year} rating={movie.rating} posterUrlPreview={movie.posterUrlPreview} key={`dropdown-movie-item-${movie.filmId}`}></DropdownMovieItem>
 				})}
 			</div>
 			<button className="dropdown-list__show-btn">Показать всё</button>
