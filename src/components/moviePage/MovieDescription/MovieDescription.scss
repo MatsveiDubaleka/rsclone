@@ -9,15 +9,11 @@ $color-brand: #f60;
 	font-family: 'Tahoma', sans-serif;
 }
 
-
-
-
 .movie-description {
 	font-size: 16px;
 	line-height: 22px;
-	width: 790px;
+	width: 100%;
 	text-align: justify;
-
 
 	&__title {
 		display: block;
@@ -40,9 +36,6 @@ $color-brand: #f60;
 			background-color: $color-light-text;
 			margin-bottom: 15px;
 		}
-
 	}
-
-
 
 }
