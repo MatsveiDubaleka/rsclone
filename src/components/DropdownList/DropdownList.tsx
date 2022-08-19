@@ -31,14 +31,14 @@ const DropdownList = ({movies} : IDropdownMovieList) => {
 	movies.splice(5);
 
 	return (
-		<div className="dropdown-list">
-			<div className="dropdown-list__movies">
+		<ul className="dropdown-list">
+			<li className="dropdown-list__movies">
 				{movies.map((movie: IDropdownMovie) : JSX.Element => {
 					return <DropdownMovieItem  nameRu={movie.nameRu} nameEn={movie.nameEn} year={movie.year} rating={movie.rating} posterUrlPreview={movie.posterUrlPreview} key={`dropdown-movie-item-${movie.filmId}`}></DropdownMovieItem>
 				})}
-			</div>
+			</li>
 			<button className="dropdown-list__show-btn">Показать всё</button>
-		</div>
+		</ul>
 	)
 }
 
