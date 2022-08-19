@@ -18,6 +18,8 @@ export const InterestingFacts = () => {
 	return(
 		<div className="interesting-facts">
 		<h3 className="interesting-facts__title">Знаете ли вы, что...</h3>
+		<InterestingFact></InterestingFact>
+		<InterestingFact></InterestingFact>
 	</div>
 	)
 }

@@ -9,15 +9,11 @@ $color-brand: #f60;
 	box-sizing: border-box;
 }
 
-
 .interesting-facts {
-	margin: 50px;
 	font-size: 16px;
 	line-height: 22px;
 	width: 100%;
 	text-align: justify;
-
-
 }
 
 .interesting-fact {
@@ -26,7 +22,6 @@ $color-brand: #f60;
 	display: flex;
 	gap: 30px;
 
-	
 	&__title {
 		display: block;
 		font-size: 24px;
