@@ -79,6 +79,7 @@ h1 {
   background: $searchBackground;
   padding-left: 15px;
   padding-right: 15px;
+  margin-bottom: 5px;
 }
 
 .search::placeholder{
@@ -116,7 +117,7 @@ h1 {
   margin-left: 44px;
   width: 200px;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
 }

@@ -43,8 +43,8 @@ const Header = () => {
           )}
           </div>
           <div className="user-auth">
+          <button className="avatar-btn" hidden></button>
             <span className="flag" id="flag" hidden></span>
-            <button className="avatar-btn" hidden></button>
             <a className="enter-link">Вход</a>
           </div>
         </div>
