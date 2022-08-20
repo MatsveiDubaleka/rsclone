@@ -19,12 +19,10 @@ button {
 }
 
 .dropdown-list {
-	margin: 150px auto;
+	position: absolute;
 	width: 340px;
-	min-height: 400px;
+	min-height: 370px;
 	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
 	box-shadow: 0px 10px 20px -2px rgba(0, 0, 0, 0.4);
 
 	&__movies {
@@ -40,6 +38,7 @@ button {
 
 
 	&__show-btn {
+		font-size: 15px;
 		display: block;
 		width: 100%;
 		height: 40px;
