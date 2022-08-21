@@ -1,0 +1,41 @@
+.movie-video {
+	width: 940px;
+	height: 400px;
+	background: #000;
+	border-radius: 4px;
+	display: flex;
+	flex-wrap: wrap;
+	position: relative;
+	overflow: hidden;
+
+	&__react-player {
+		position: absolute;
+		top: -90px;
+	}
+
+	&__about {
+		position: absolute;
+		color: white;
+		width: 50%;
+		height: 150px;
+		bottom: 0;
+		padding-left: 80px;
+		text-align: left;
+		z-index: 10;
+	}
+
+	&__title {
+		font-family: 'Tahoma';
+		font-weight: 700;
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+
+	&__year,
+	&__genre,
+	&__country {
+		font-weight: normal;
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+}
