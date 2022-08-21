@@ -7,6 +7,7 @@ import "./MovieVideo.scss";
 const MovieVideo = () => {
 	const [trailer, setTrailer] = useState<any>("");
 	const [videoURL, setVideoURL] = useState<any>("");
+	
 	const currentYear: number = new Date().getFullYear();
 	const currentMonth: string = new Date().toLocaleString('en', {       
 		month: 'long'       
