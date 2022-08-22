@@ -25,7 +25,7 @@ const userAccountNavData : INavItemDataArray = [
   },
 ]
 
-export const UserAccountSideMenu = () => {
+export const UserAccountMenu = () => {
 	return(
 		<React.Fragment>
 			<SideNavigation navData={userAccountNavData}></SideNavigation>
