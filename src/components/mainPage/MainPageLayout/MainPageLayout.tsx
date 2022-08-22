@@ -1,5 +1,4 @@
 import { MainPageMenu } from "../MainPageMenu/MainPageMenu"
-import MovieCard from "../MovieCard/MovieCard"
 import MovieCardsList from "../MovieCardsList/MovieCardsList"
 import { YouInterestedList } from "../YouInterestedList/YouInterestedList"
 import "./MainPageLayout.scss"
