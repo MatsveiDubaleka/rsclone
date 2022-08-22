@@ -18,7 +18,9 @@ const DropdownMovieItem = ({nameRu, nameEn, posterUrlPreview, year, rating, film
 			<div className="dropdown-movie-item__poster" style={{backgroundImage: `url(${posterUrlPreview})`}}></div>
 			<div className="dropdown-movie-item__info">
 				<p className="dropdown-movie-item__title">{nameRu}</p>
-				<p className={ratingClass}>{rating},</p>
+				{rating > 0 && (
+					<p className={ratingClass}>{rating},</p>
+				)}
 				<p className="dropdown-movie-item__title-en">{nameEn},</p>
 				<p className="dropdown-movie-item__year">{year}</p>
 			</div>
