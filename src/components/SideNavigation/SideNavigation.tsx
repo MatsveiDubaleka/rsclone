@@ -1,5 +1,5 @@
 import "./SideNavigation.scss";
-import { INavData, INavItemData } from "./SideNavigationData";
+import { INavData, INavItemData } from "./types";
 
 export const SideNavigation = ({navData} : INavData) => {
 	return (
