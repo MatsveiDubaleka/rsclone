@@ -16,7 +16,9 @@ const MovieCardsList = ({title} : any) => {
 		}).then(({ data }) => setMovies(data.films));
 
 	}, []);
+/*
 	console.log(movies);
+*/
 	movies.splice(6);
 
 	return (
