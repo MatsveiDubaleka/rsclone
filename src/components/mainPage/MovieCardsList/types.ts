@@ -1,4 +1,4 @@
-export interface I.MovieCardList {
+export interface IMovieCardList {
 	title: string;
 }
 
