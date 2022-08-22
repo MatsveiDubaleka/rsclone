@@ -1,14 +1,34 @@
-import "./UserAccountSideMenu.scss";
+import React from "react";
+import { SideNavigation } from "../../SideNavigation/SideNavigation";
+import { INavItemDataArray } from "../../SideNavigation/types";
+
+const userAccountNavData : INavItemDataArray = [
+	{
+    title: "Мой профиль",
+    path: '/my-account',
+    icon: 'home-menu-icon',
+  },
+  {
+    title: "Буду смотреть",
+    path: '/to-watch',
+    icon: 'will-watch-icon',
+  },
+  {
+    title: "Мои оценки",
+    path: '/watched',
+    icon: 'my-ratings-icon',
+  },
+	{
+    title: "Мои рецензии",
+    path: '/my-reviews',
+    icon: 'my-reviews-icon',
+  },
+]
 
 export const UserAccountSideMenu = () => {
 	return(
-		<div className="side-menu">
-			<ul className="side-menu__list">
-				<a href="#" className="side-menu__item active">Мой профиль</a>
-				<a href="#" className="side-menu__item">Буду смотреть</a>
-				<a href="#" className="side-menu__item">Мои оценки</a>
-				<a href="#" className="side-menu__item">Мои рецензии</a>
-			</ul>
-		</div>
+		<React.Fragment>
+			<SideNavigation navData={userAccountNavData}></SideNavigation>
+		</React.Fragment>
 	)
 }
