@@ -13,8 +13,6 @@ const getData = async (url: string, APIToken: string = token) => {
 
   await instance.get(url)
     .then(function (response: AxiosResponse) {
-      // handle success
-      console.log(response);
       return response;
     })
     .catch(function (error) {
