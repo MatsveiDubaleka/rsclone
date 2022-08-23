@@ -1,6 +1,7 @@
 $color-lines: #e6e6e6;
 $color-user-name: #060077;
 $color-dark-text: #333;
+$color-brand: #f60;
 
 
 * {
@@ -26,8 +27,6 @@ select {
 		outline-color: transparent;
 	}
 }
-
-
 
 .write-review {
 	width: 620px;
@@ -89,8 +88,18 @@ select {
 	}
 
 	&__textarea {
-		height: auto;
-		flex: 1 0 auto;
+		height: 400px;
+		resize: none;
+		padding-top: 10px;
 		font-weight: 400;
+	}
+
+	&__btn {
+		height: 40px;
+		width: 100%;
+		background-color: $color-brand;
+		border-radius: 4px;
+		font-weight: 700;
+		color: #fff;
 	}
 }
