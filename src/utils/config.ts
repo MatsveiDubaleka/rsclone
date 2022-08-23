@@ -8,7 +8,7 @@ const instance = axios.create({
 
 instance.defaults.headers.post['Content-Type'] = 'application/json';
 
-const getData = async (url: string, APIToken: string = token) => {
+export const getData = async (url: string, APIToken: string = token) => {
   instance.defaults.headers.common['X-API-KEY'] = APIToken;
 
   await instance.get(url)
