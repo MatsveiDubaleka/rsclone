@@ -16,15 +16,23 @@ select {
 	color: inherit;
 	border: none;
 	background-color: transparent;
+	background: none;
 	vertical-align: middle; 
 	margin: 0;
+
+	&:focus,
+	&:active {
+		border: none;
+		outline-color: transparent;
+	}
 }
 
 
 
 .write-review {
 	width: 620px;
-	height: 700px;
+	min-height: 700px;
+	height: auto;
 	border-radius: 8px;
 	border: 1px solid $color-lines;
 
@@ -56,14 +64,33 @@ select {
 		height: 40px;
 		border-radius: 4px;
 		background-color: $color-lines;
-		color: $color-dark-text;
+
+		padding-left: 10px;
+		font-weight: 700;
+		font-size: 14px;
 
 		&:focus {
-			border: none;
+			background-color: darken($color: $color-lines, $amount: 3);
+		}
+	}
+
+	&__select {
+		color: $color-dark-text;
+	}
+
+	&__input,
+	&__textarea {
+		color: lighten($color: $color-dark-text, $amount: 40);
+
+		&:focus {
+			color: $color-dark-text;
+			font-weight: 400;
 		}
 	}
 
 	&__textarea {
+		height: auto;
 		flex: 1 0 auto;
+		font-weight: 400;
 	}
 }
