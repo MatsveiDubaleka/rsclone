@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import MovieCard from "../MovieCard/MovieCard";
+import { IMovieCardList } from "./types";
 import "./MovieCardsList.scss";
 import axios from "axios";
 import { token } from "../../../utils/token";
 
-const MovieCardsList = ({title} : any) => {
+const MovieCardsList: FC<IMovieCardList> = ({title}) => {
 
-	const [movies, setMovies] = useState<any>([]);
+	const [movies, setMovies] = useState <any>([]);
 
 	useEffect(()=> {
 		axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=1', {
