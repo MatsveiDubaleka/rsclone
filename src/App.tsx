@@ -6,7 +6,7 @@ import { MainPageLayout } from './components/mainPage/MainPageLayout/MainPageLay
 const App = () => {
   return (
     <div className="App">
-      <Header />
+      <Header /> 
 			<MainPageLayout />
       <Footer /> 
     </div>

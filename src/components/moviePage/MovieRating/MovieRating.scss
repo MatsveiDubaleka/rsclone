@@ -29,12 +29,13 @@ $color-negative: #FF0000;
 		height: 65px;
 		color: $color-light-text;
 
-		&_stars {
-			
-		}
-
 		&_stars-numbers {
 			font-size: 13px;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			padding-left: 10px;
+			padding-right: 5px;
 		}
 
 		&_rating {

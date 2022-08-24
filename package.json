@@ -10,6 +10,7 @@
     "@types/node": "^16.11.48",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
+    "@types/react-star-rating-component": "^1.4.1",
     "axios": "^0.27.2",
     "babel-jest": "^27.5.1",
     "jest": "^27.5.1",
@@ -84,7 +85,7 @@
     "eslint-plugin-react": "^7.30.1",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "movie-trailer": "^1.0.4",
+    "movie-trailer": "^2.1.0",
     "tsc-files": "^1.1.3"
   }
 }

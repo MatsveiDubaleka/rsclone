@@ -7,12 +7,12 @@ import "./MainPageLayout.scss"
 export const MainPageLayout = () => {
 	return(
 		<main className="main-page">
-			<MainPageMenu></MainPageMenu>
+			<MainPageMenu />
 			<div className="main-page__content">
 				<MovieVideo />
-				<MovieCardsList title="Рекомендации"></MovieCardsList>
-				<MovieCardsList title="Новинки"></MovieCardsList>
-				<YouInterestedList></YouInterestedList>
+				<MovieCardsList title="Рекомендации" />
+				<MovieCardsList title="Новинки" />
+				<YouInterestedList />
 			</div>
 		</main>
 	)

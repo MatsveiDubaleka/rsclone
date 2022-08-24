@@ -23,5 +23,9 @@
   "include": [
     "src",
     "@testing-library/jest-dom"
+  ],
+  "files": [
+    "./src/components/moviePage/MovieRating/MovieRating.d.ts",
+    "./src/components/mainPage/MovieVideo/MovieVideo.d.ts",
   ]
 }
