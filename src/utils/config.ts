@@ -9,7 +9,6 @@ instance.defaults.headers.post['Content-Type'] = 'application/json';
 
 // export const getData = async (url: string, APIToken: string = token) => {
 //   instance.defaults.headers.common['X-API-KEY'] = APIToken;
-
 //   await instance.get(url)
 //     .then(function (response: AxiosResponse) {
 //       return response;
@@ -22,13 +21,11 @@ instance.defaults.headers.post['Content-Type'] = 'application/json';
 //       // always executed
 //     });
 // }
-
 // getData('v2.2/films');
 
 
 export const getData =  async (url: string, callback: (response : any) => void, isLoadingCallback : (isLoading : boolean) => void, APIToken: string = token) => {
   instance.defaults.headers.common['X-API-KEY'] = APIToken;
-
   await instance.get(url)
     .then(function (response: AxiosResponse) {
 			return response.data;
