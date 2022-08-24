@@ -1,7 +1,7 @@
 import "./MovieDescription.scss";
 
 export const MovieDescription = () => {
-	return(
+	return (
 		<div className="movie-description">
 			<h3 className="movie-description__title">Обзор</h3>
 			<p className="movie-description__text">Несколько месяцев назад в глухой деревушке бесследно пропал ребенок. 

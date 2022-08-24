@@ -6,8 +6,8 @@ import { MainPageLayout } from './components/mainPage/MainPageLayout/MainPageLay
 const App = () => {
   return (
     <div className="App">
-      <Header /> 
-			<MainPageLayout></MainPageLayout>
+      <Header />
+			<MainPageLayout />
       <Footer /> 
     </div>
   );
