@@ -1,4 +1,6 @@
+import { FC, useState } from "react";
 import "./UserReviewCard.scss";
+
 
 export type Review = {
 	author: string,
@@ -15,8 +17,14 @@ type UserReviewCardProps = {
 	review: Review
 }
 
-export const UserReviewCard = ({ review } : UserReviewCardProps) => {
+export const UserReviewCard : FC<UserReviewCardProps> = ({ review }) => {
 
+	const [isShownFull, setIsShownFull] = useState(false);
+
+	const handleBtnClick = () => {
+		isShownFull ? setIsShownFull(false) : setIsShownFull(true);
+		console.log('IS SHOWN FULL', isShownFull);
+	} 
 
 	return(
 		<div className={`user-review ${(review.type).toLocaleLowerCase()}`}>
@@ -26,9 +34,9 @@ export const UserReviewCard = ({ review } : UserReviewCardProps) => {
 			</div>
 			<div className="user-review__main">
 				<h4 className="user-review__title">{review.title}</h4>
-				<p className="user-review__text">{review.description}</p>
+				<p className={`user-review__text ${isShownFull ? 'full-shown' : ''}`}>{review.description}</p>
 			</div>
-			<button className="user-review__show-btn">показать всю рецензию</button>
+			<button className="user-review__show-btn" onClick={handleBtnClick}>{isShownFull ? 'скрыть' : 'показать всю рецензию'}</button>
 		</div>
 	)
 }
