@@ -1,13 +1,29 @@
-import "./MainPageMenu.scss";
+import React from "react";
+import { SideNavigation } from "../../SideNavigation/SideNavigation";
+import { INavItemDataArray } from "../../SideNavigation/types";
+
+const mainPageNavData : INavItemDataArray = [
+  {
+    title: "Главная",
+    path: '/main',
+    icon: 'home-menu-icon',
+  },
+  {
+    title: "Фильмы",
+    path: '/movies',
+    icon: 'movie-menu-icon',
+  },
+  {
+    title: "Сериалы",
+    path: '/tv-series',
+    icon: 'tvseries-menu-icon',
+  },
+]
 
 export const MainPageMenu = () => {
 	return(
-		<div className="side-menu">
-			<ul className="side-menu__list">
-				<a href="#" className="side-menu__item active">Главная</a>
-				<a href="#" className="side-menu__item">Фильмы</a>
-				<a href="#" className="side-menu__item">Сериалы</a>
-			</ul>
-		</div>
+		<React.Fragment>
+			<SideNavigation navData={mainPageNavData}></SideNavigation>
+		</React.Fragment>
 	)
 }

@@ -17,7 +17,9 @@ const MovieCardsList: FC<IMovieCardList> = ({title}) => {
 		}).then(({ data }) => setMovies(data.films));
 
 	}, []);
+/*
 	console.log(movies);
+*/
 	movies.splice(6);
 
 	return (

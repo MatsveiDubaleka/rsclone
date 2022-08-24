@@ -1,15 +1,13 @@
-import { UserAccountSideMenu } from '../UserAccountSideMenu/UserAccountSideMenu';
+import { UserAccountMenu } from '../UserAccountMenu/UserAccountMenu';
 import { UserData } from '../UserData/UserData';
 import './UserAccountPageLayout.scss';
 
 export const UserAccountPageLayout = () => {
 	return(
 		<main className="user-account-page">
+			<UserAccountMenu></UserAccountMenu>
 			<div className="user-account-page__content">
-				<UserAccountSideMenu></UserAccountSideMenu>
-				<div className="user-account-page__content">
 					<UserData></UserData>
-				</div>
 			</div>
 		</main>
 	)
