@@ -5,6 +5,9 @@ import { MovieRating } from '../MovieRating/MovieRating'
 import { UsersReviews } from "../UsersReviews/UsersReviews"
 import "./MoviePageLayout.scss"
 
+
+
+
 export const MoviePageLayout = () => {
 	return(
 		<main className="movie-page">
@@ -14,7 +17,7 @@ export const MoviePageLayout = () => {
 					<MovieDescription></MovieDescription>
 					<MovieRating />
 					<InterestingFacts></InterestingFacts>
-					<UsersReviews></UsersReviews>
+					<UsersReviews movieId={333}></UsersReviews>
 				</div>
 				<div className="movie-page__column-2">
 					Этот блок под вопросом пусть пока будет тут

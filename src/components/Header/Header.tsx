@@ -1,8 +1,9 @@
-import { useState, useEffect, SetStateAction } from "react";
+import { useState, SetStateAction } from "react";
 import axios from "axios";
 import { token } from "../../utils/token";
 import './Header.scss';
 import DropdownList from '../DropdownList/DropdownList';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [query, setQuery] = useState("");
@@ -23,7 +24,13 @@ const Header = () => {
   return (
     <div className="header-wrapper">
       <header className="header">
-        <div className="logo"><h1>KINOPOISK</h1></div>
+        <Link to={'/'}>
+          <div className="logo">
+            <h1>
+              KINOPOISK
+            </h1>
+          </div>
+        </Link>
         <div className="header-nav">
           <div className="search-wrap">
             <input placeholder="Фильмы, сериалы, персоны" 
