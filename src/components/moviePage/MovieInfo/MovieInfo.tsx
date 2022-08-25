@@ -1,6 +1,10 @@
+import { useState } from 'react';
+import { MovieRatingSet } from '../MovieRatingSet/MovieRatingSet';
 import "./MovieInfo.scss";
 
 export const MovieInfo = () => {
+	const[elem, setElem] = useState<JSX.Element>();
+
 	return(
 		<div className="movie-info">
 			<div className="movie-info__column-1">
@@ -11,7 +15,9 @@ export const MovieInfo = () => {
 				<h2 className="movie-info__title">Бойся темноты (2021)</h2>
 				<div className="movie-info__buttons">
 					<button className="movie-info__to-watch-btn"></button>
-					<button className="movie-info__to-rate-btn"></button>
+					<button onClick={(): void => elem ? setElem(undefined) : setElem(<MovieRatingSet />)} 
+						className="movie-info__to-rate-btn"></button>
+					{elem ? elem : null}
 				</div>
 				<h3 className="movie-info__about-title">О фильме</h3>
 				<div className="movie-info__main">
