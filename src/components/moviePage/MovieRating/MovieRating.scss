@@ -1,0 +1,82 @@
+$color-light-text: rgba(0, 0, 0, 0.4);
+$color-dark-text: #333;
+$color-positive: #3BB33B;
+$color-neutral: #777777;
+$color-negative: #FF0000;
+
+.movie-rating {
+	font-family: 'Tahoma';
+	font-style: normal;
+	width: 100%;
+	height: 108px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: flex-start;
+
+	&__title {
+		font-weight: 700;
+		font-size: 24px;
+		color: $color-dark-text;
+		margin-bottom: 13px;
+	}
+
+	&__content {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: flex-start;
+		height: 65px;
+		color: $color-light-text;
+
+		&_stars-numbers {
+			font-size: 13px;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			padding-left: 10px;
+			padding-right: 5px;
+		}
+
+		&_rating {
+			width: 100px;
+
+			&_num {
+				font-size: 40px;
+				font-weight: 700;
+
+				&.positive {
+					color: $color-positive;
+				}
+				&.neutral {
+					color: $color-neutral;
+				}
+				&.negative {
+					color: $color-negative;
+				}
+			}
+
+			&_sum {
+				font-size: 13px;
+			}
+		}
+
+		&_rating-imdb {
+			display: flex;
+			height: 65px;
+			align-items: flex-end;
+			justify-content: space-between;
+			font-size: 16px;
+			width: 175px;
+
+			&_num {
+				font-weight: 700;
+			}
+
+			&_sum {
+
+			}
+		}
+
+	}
+}
