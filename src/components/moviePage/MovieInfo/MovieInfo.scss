@@ -119,8 +119,8 @@ button {
 	}
 
 	&__column-3 {
-		width: 210px;
-		flex: 0 1 210px;
+
+		flex: 0 1 300px;
 		margin-left: auto;
 		margin-right: 50px;
 		text-align: left;
@@ -169,7 +169,19 @@ button {
 		}
 
 		p {
-			margin-bottom: 7px;
+			margin-bottom: 10px;
 		}
+	}
+
+	&__no-rating-symbol {
+		font-size: 42px;
+		color: $color-titles;
+		margin-top: 10px;
+	}
+
+	&__no-rating-message {
+		color: $color-light-text;
+		font-size: 12px;
+		margin-top: 10px;
 	}
 }
