@@ -1,25 +1,48 @@
+import { FC, useEffect, useState } from "react";
+import { getData } from "../../../utils/config";
+import { MovieIdProps } from "../MoviePageLayout/MoviePageLayout";
 import "./InterestingFacts.scss";
 
-const InterestingFact = () => {
+type Fact = {
+  spoiler: boolean,
+  text: string,
+  type: string
+}
+
+type InterestingFactProp = {
+  fact: Fact
+}
+
+type FactsData = {
+  items: Fact[] | undefined,
+  total: number
+}
+
+const InterestingFact : FC<InterestingFactProp> = ({ fact }) => {
 	return (
 		<div className="interesting-fact">
 		<span className="interesting-fact__marker"></span>
-		<p className="interesting-fact__text">Несколько месяцев назад в глухой деревушке бесследно пропал ребенок. 
-			Спустя время все почти забыли о происшедшем. Однажды в местную школу приезжает молодая учительница. 
-			Вместе с маленьким сыном она пытается начать новую жизнь, подальше сбежав от своего прошлого. 
-			Цепь загадочных событий указывает на то, что появление мальчика могло вновь пробудить древнее зло, 
-			затаившееся в окрестных лесах.
-		</p>
+		<p className="interesting-fact__text" dangerouslySetInnerHTML={{__html: `${fact.text}`}}></p>
 	</div>
 	)
 }
 
-export const InterestingFacts = () => {
+export const InterestingFacts :FC<MovieIdProps> = ({ movieId }) => {
+
+	const [facts, setFacts] = useState<FactsData>();
+
+	useEffect(() => {
+    getData(`v2.2/films/${movieId}/facts`, setFacts);
+  }, [setFacts]);
+
+	console.log("FACTS: ", facts);
+
 	return(
 		<div className="interesting-facts">
 		<h3 className="interesting-facts__title">Знаете ли вы, что...</h3>
-		<InterestingFact></InterestingFact>
-		<InterestingFact></InterestingFact>
+		{facts?.items?.slice(0, 5).map((fact : Fact, index: number) => {
+			return <InterestingFact key={`fact-${index}`} fact={fact}/>
+		})}
 	</div>
 	)
 }
