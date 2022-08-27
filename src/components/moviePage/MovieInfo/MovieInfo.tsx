@@ -4,6 +4,7 @@ import { MovieDescription } from '../MovieDescription/MovieDescription';
 import { MovieIdProps } from '../MoviePageLayout/MoviePageLayout';
 import { MovieRatingSet } from '../MovieRatingSet/MovieRatingSet';
 import "./MovieInfo.scss";
+import { filterPersons, findBudget, findDWorldPremiere, formatAge, formatData } from './utils';
 
 type Movie = {
 	nameRu?: string,
@@ -21,7 +22,7 @@ type Movie = {
 	ratingAgeLimits?: string
 }
 
-type Person = {
+export type Person = {
 	description?: null | string,
 	nameEn?: string,
 	nameRu?: string,
@@ -31,7 +32,7 @@ type Person = {
 	staffId?: number
 }
 
-type Budget = {
+export type Budget = {
 	amount: number,
 	currencyCode: string,
 	name: string,
@@ -39,7 +40,12 @@ type Budget = {
 	type: string,
 }
 
-type Distributions = {
+export type BudgetData = {
+	total: number,
+	items: Budget []
+} | undefined
+
+export type Distributions = {
 	companies: any,
 	country: Country | null,
 	date: string,
@@ -47,6 +53,11 @@ type Distributions = {
 	subType: string,
 	type: string
 }
+
+export type DistributionsData = {
+	total: number,
+	items: Distributions []
+} | undefined
 
 type Genre = {
 	genre: string
@@ -56,15 +67,17 @@ type Country = {
 	country: string
 }
 
-type Cast = Person [];
-
-
+export type Cast = Person [];
 
 export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 	const[elem, setElem] = useState<JSX.Element>();
 
 	const [movie, setMovie] = useState<Movie>({});
 	const [persons, setPersons] = useState<Cast>([]);
+	const [budget, setBudget] = useState<BudgetData>();
+	const [budgetRus, setBudgetRus] = useState<string | undefined>('');
+
+	const [distributions, setDistributions] = useState();
 
 	useEffect(() => {
 		getData(`v2.2/films/${movieId}/`, setMovie);
@@ -74,22 +87,24 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 		getData(`v1/staff?filmId=${movieId}`, setPersons);
 	}, [setPersons]);
 
-	const filterPersons = (persons: Cast, key : string) => {
-		if (key === "ACTOR") {
-			return persons.filter((person : Person) => person.professionKey === key).splice(0, 13);
-		} else {
-			return persons.filter((person : Person) => person.professionKey === key);
-		}
+	useEffect(() => {
+		getData(`v2.2/films/${movieId}/box_office`, setBudget);
+		const budgetRus = findBudget(budget, "RUS");
+		setBudgetRus(budgetRus);
+	}, [setBudget, setBudgetRus]);
+
+	useEffect(() => {
+		getData(`v2.2/films/${movieId}/distributions`, setDistributions);
+	}, [setDistributions]);
+
+	let ratingClass = '';
+	if (movie?.ratingKinopoisk) {
+		ratingClass = movie?.ratingKinopoisk < 5 ? 'negative' : movie?.ratingKinopoisk < 7 ? 'neutral' : 'positive';
 	}
-
-	console.log(persons)
-
-	console.log(filterPersons(persons, "DIRECTOR"));
-
 
 	return(
 		<>
-				<div className="movie-info">
+			<div className="movie-info">
 			<div className="movie-info__column-1">
 				<div className="movie-info__poster" style={{ backgroundImage: `url(${movie?.posterUrl})`}}></div>
 				<div className="movie-info__trailer" style={{ backgroundImage: `url(${movie?.coverUrl})`}}></div>
@@ -128,20 +143,29 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 					<p>{filterPersons(persons, "COMPOSER")?.map((item : Person) => item.nameRu).join(', ')}</p>
 					<p>Монтаж</p>
 					<p>{filterPersons(persons, "EDITOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
+					<p>Бюджет</p>
+					<p className="movie-info__fees-world">{findBudget(budget, "BUDGET")}</p>
+					{budgetRus && 
+						<>
+							<p>Сборы в России</p>
+							<p className="movie-info__fees-world">{budgetRus}</p>
+						</>
+					}
 					<p>Сборы в мире</p>
-					<p className="movie-info__fees-world">$ 96 448</p>
-					<p>Премьера в России</p>
-					<p className="movie-info__premiere-russia">4 августа 2022, “Capella Film”</p>
+					<p className="movie-info__fees-world">{findBudget(budget, "WORLD")}</p>
 					<p>Премьера в мире</p>
-					<p className="movie-info__premiere-world">4 августа 2022, “Capella Film”</p>
-					<p>Цифровой релиз</p>
-					<p>8 сентября 2022, “Capella Film”</p>
+					<p className="movie-info__premiere-world">{formatData(findDWorldPremiere(distributions))}</p>
+					{movie?.ratingAgeLimits && 
+					<>
+						<p>Возраст</p>
+						<p>{formatAge(movie?.ratingAgeLimits)}</p>
+					</>}
 					<p>Время</p>
 					<p className="movie-info__movie-length">{ `${movie?.filmLength} мин.`}</p>
 				</div>
 			</div>
 			<div className="movie-info__column-3">
-				<p className="movie-info__rating negative">{movie?.ratingKinopoisk}</p>
+				<p className={`movie-info__rating ${ratingClass}`}>{movie?.ratingKinopoisk}</p>
 				<p className="movie-info__ratings-total">{movie?.ratingKinopoiskVoteCount} оценки</p>
 				<p className="movie-info__reviews-total">{movie?.reviewsCount} рецензии</p>
 				<div className="movie-info__cast">
