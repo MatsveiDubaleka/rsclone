@@ -35,8 +35,6 @@ export const InterestingFacts :FC<MovieIdProps> = ({ movieId }) => {
     getData(`v2.2/films/${movieId}/facts`, setFacts);
   }, [setFacts]);
 
-	console.log("FACTS: ", facts);
-
 	return(
 		<div className="interesting-facts">
 		<h3 className="interesting-facts__title">Знаете ли вы, что...</h3>
