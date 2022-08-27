@@ -23,7 +23,6 @@ export const UserReviewCard : FC<UserReviewCardProps> = ({ review }) => {
 
 	const handleBtnClick = () => {
 		isShownFull ? setIsShownFull(false) : setIsShownFull(true);
-		console.log('IS SHOWN FULL', isShownFull);
 	} 
 
 	return(
@@ -34,7 +33,7 @@ export const UserReviewCard : FC<UserReviewCardProps> = ({ review }) => {
 			</div>
 			<div className="user-review__main">
 				<h4 className="user-review__title">{review.title}</h4>
-				<p className={`user-review__text ${isShownFull ? 'full-shown' : ''}`}>{review.description}</p>
+				<p className={`user-review__text ${isShownFull ? 'full-shown' : ''}`} dangerouslySetInnerHTML={{__html: `${review.description}`}}></p>
 			</div>
 			<button className="user-review__show-btn" onClick={handleBtnClick}>{isShownFull ? 'скрыть' : 'показать всю рецензию'}</button>
 		</div>
