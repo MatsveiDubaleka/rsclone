@@ -6,7 +6,7 @@ import { MovieRatingSet } from '../MovieRatingSet/MovieRatingSet';
 import "./MovieInfo.scss";
 import { filterPersons, findBudget, findDWorldPremiere, formatAge, formatData } from './utils';
 
-type Movie = {
+export type Movie = {
 	nameRu?: string,
 	year?: number | string,
 	countries?: Country [],
@@ -19,7 +19,9 @@ type Movie = {
 	ratingKinopoisk?: number,
 	ratingKinopoiskVoteCount?: number,
 	reviewsCount?: number,
-	ratingAgeLimits?: string
+	ratingAgeLimits?: string,
+	ratingImdb?: number,
+	ratingImdbVoteCount?: number
 }
 
 export type Person = {
@@ -76,7 +78,6 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 	const [persons, setPersons] = useState<Cast>([]);
 	const [budget, setBudget] = useState<BudgetData>();
 	const [budgetRus, setBudgetRus] = useState<string | undefined>('');
-
 	const [distributions, setDistributions] = useState();
 
 	useEffect(() => {
