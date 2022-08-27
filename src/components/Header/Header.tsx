@@ -5,11 +5,17 @@ import './Header.scss';
 import DropdownList from '../DropdownList/DropdownList';
 import { Link } from "react-router-dom";
 
+let searchResults: never[];
+let searchWord: string;
+
 const Header = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
 
-  const onChange = (e: { preventDefault: () => void; target: { value: SetStateAction<string>; }; }) => {
+  searchResults = results;
+  searchWord = query;
+
+  const onChange = (e: { preventDefault: () => void; target: { value: SetStateAction<string>; }; }): void => {
     e.preventDefault();
 
     setQuery(e.target.value);
@@ -33,14 +39,19 @@ const Header = () => {
         </Link>
         <div className="header-nav">
           <div className="search-wrap">
+            
             <input placeholder="Фильмы, сериалы, персоны" 
             id="header-search" className="search" type="text" 
             autoComplete="off" autoFocus 
             value={query}
             onChange={onChange}
             />
+            
             <span className="search-settings" id="search-settings"></span>
-            <span className="search-loop" id="search-loop"></span>
+
+            <Link to={`/searchPage?search=${searchWord}`}>
+              <button onClick={()=>setResults([])} className="search-loop" id="search-loop"></button>
+            </Link>
             
             {results.length > 0 && (
             <ul className="results">
@@ -59,5 +70,5 @@ const Header = () => {
     </div>
   );
 }
-
+export { searchResults, searchWord };
 export default Header;
