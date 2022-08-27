@@ -7,36 +7,36 @@ const instance = axios.create({
 
 instance.defaults.headers.post['Content-Type'] = 'application/json';
 
-// export const getData = async (url: string, APIToken: string = token) => {
-//   instance.defaults.headers.common['X-API-KEY'] = APIToken;
-//   await instance.get(url)
-//     .then(function (response: AxiosResponse) {
-//       return response;
-//     })
-//     .catch(function (error) {
-//       // handle error
-//       console.log(error);
-//     })
-//     .then(function () {
-//       // always executed
-//     });
-// }
-// getData('v2.2/films');
-
-
-export const getData =  async (url: string, callback: (response : any) => void, isLoadingCallback : (isLoading : boolean) => void, APIToken: string = token) => {
+export const getData = async (url: string, callback: (response : any) => void, APIToken: string = token) => {
   instance.defaults.headers.common['X-API-KEY'] = APIToken;
   await instance.get(url)
     .then(function (response: AxiosResponse) {
-			return response.data;
+      return response.data;
     })
 		.then(responce => {
 			callback(responce);
 		})
-		.then(() => isLoadingCallback(false))
     .catch(function (error) {
       // handle error
       console.log(error);
     })
 }
+// getData('v2.2/films');
+
+
+// export const getData =  async (url: string, callback: (response : any) => void, isLoadingCallback : (isLoading : boolean) => void, APIToken: string = token) => {
+//   instance.defaults.headers.common['X-API-KEY'] = APIToken;
+//   await instance.get(url)
+//     .then(function (response: AxiosResponse) {
+// 			return response.data;
+//     })
+// 		.then(responce => {
+// 			callback(responce);
+// 		})
+// 		.then(() => isLoadingCallback(false))
+//     .catch(function (error) {
+//       // handle error
+//       console.log(error);
+//     })
+// }
 

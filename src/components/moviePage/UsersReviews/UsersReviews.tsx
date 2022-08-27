@@ -1,12 +1,10 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { getData } from "../../../utils/config";
-import { UserReviewCard } from "../UserReviewCard/UserReviewCard";
+import { MovieIdProps } from "../MoviePageLayout/MoviePageLayout";
+import { Review, UserReviewCard } from "../UserReviewCard/UserReviewCard";
 import { WriteReviewForm } from "../WriteReviewForm/WriteReviewForm";
 import "./UsersReviews.scss";
 
-type UsersReviewsProps = {
-	movieId: number;
-}
 
 type ReviewsData = {
 	items: any, // не смогла это затипизировать
@@ -17,41 +15,29 @@ type ReviewsData = {
 	totalPositiveReviews: number,
 }
 
-export const UsersReviews = ({movieId} : UsersReviewsProps) => {
+export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
 
 	const [isReviewFormVisible, setVisibility] = useState<boolean>(false);
 	const [reviewsData, setReviewsData] = useState<ReviewsData>();
-	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		getData(`v2.2/films/${movieId}/reviews?page=5&order=USER_POSITIVE_RATING_ASC`, setReviewsData, setIsLoading);
-	}, []);
+		getData(`v2.2/films/${movieId}/reviews?page=1&order=DATE_DESC`, setReviewsData);
+	}, [setReviewsData]);
 
 	const handleWriteReviewButton = () => {
 		setVisibility(isReviewFormVisible ? false : true);
 	}
 
-	const allReviews = reviewsData?.items;
-	console.log(allReviews);
-
-	//TODO
-	// в идеале надо сделать так, чтобы на странице была зелная, серая и красная цитаты
-	// оставила на потом потому что это сейчас не приоритет
-	// const firstPositiveReview = allReviews.find((review : Review) => review.type === "POSITIVE");
-	// const firstNeutralReview = allReviews.find((review : Review) => review.type === "NEUTRAL");
-	// const firstNegativeReview = allReviews.find(((review : Review) => review.type === "NEGATIVE"));
-
 	return(
 		<div className="users-reviews">
 			<h3 className="users-reviews__title">Рецензии зрителей</h3>
 			<button className="users-reviews__write-review-btn" onClick={handleWriteReviewButton}>Написать рецензию</button>
-			{ !isLoading && 
 				<div className="users-reviews__content">
 					<div className="users-reviews__reviews">
 							{ isReviewFormVisible ? <WriteReviewForm></WriteReviewForm> : <></>}
-							<UserReviewCard review={reviewsData?.items[0]}/>
-							<UserReviewCard review={reviewsData?.items[1]}/>
-							<UserReviewCard review={reviewsData?.items[2]}/>
+							{reviewsData?.items?.splice(0, 3).map((item : Review, index:number) => {
+								return <UserReviewCard key={`review-${index}`} review={item} />
+							})}
 					</div>
 					<div className="users-reviews__info">
 							<div className="users-reviews__total active">
@@ -72,7 +58,6 @@ export const UsersReviews = ({movieId} : UsersReviewsProps) => {
 							</div>
 					</div>
 				</div>
-			}
 		</div>
 	)
 }
