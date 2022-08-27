@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { getData } from '../../../utils/config';
+import { MovieDescription } from '../MovieDescription/MovieDescription';
 import { MovieIdProps } from '../MoviePageLayout/MoviePageLayout';
 import { MovieRatingSet } from '../MovieRatingSet/MovieRatingSet';
 import "./MovieInfo.scss";
@@ -20,14 +21,14 @@ type Movie = {
 	ratingAgeLimits?: string
 }
 
-type CastPerson = {
-	description: null | string,
-	nameEn: string,
-	nameRu: string,
-	posterUrl: string | null,
-	professionKey: string,
-	professionText: string,
-	staffId: number
+type Person = {
+	description?: null | string,
+	nameEn?: string,
+	nameRu?: string,
+	posterUrl?: string | null,
+	professionKey?: string,
+	professionText?: string,
+	staffId?: number
 }
 
 type Budget = {
@@ -55,7 +56,7 @@ type Country = {
 	country: string
 }
 
-type Cast = CastPerson [];
+type Cast = Person [];
 
 
 
@@ -63,17 +64,32 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 	const[elem, setElem] = useState<JSX.Element>();
 
 	const [movie, setMovie] = useState<Movie>({});
+	const [persons, setPersons] = useState<Cast>([]);
 
 	useEffect(() => {
 		getData(`v2.2/films/${movieId}/`, setMovie);
 	}, [setMovie]);
 
-	console.log("MOVIE", movie);
+	useEffect(() => {
+		getData(`v1/staff?filmId=${movieId}`, setPersons);
+	}, [setPersons]);
 
+	const filterPersons = (persons: Cast, key : string) => {
+		if (key === "ACTOR") {
+			return persons.filter((person : Person) => person.professionKey === key).splice(0, 13);
+		} else {
+			return persons.filter((person : Person) => person.professionKey === key);
+		}
+	}
+
+	console.log(persons)
+
+	console.log(filterPersons(persons, "DIRECTOR"));
 
 
 	return(
-		<div className="movie-info">
+		<>
+				<div className="movie-info">
 			<div className="movie-info__column-1">
 				<div className="movie-info__poster" style={{ backgroundImage: `url(${movie?.posterUrl})`}}></div>
 				<div className="movie-info__trailer" style={{ backgroundImage: `url(${movie?.coverUrl})`}}></div>
@@ -101,17 +117,17 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 								</>
 						}
 					<p className="movie-info__director">Режиссёр</p>
-					<p>информация недоступна</p>
-					<p>Сценарий?????</p>
-					<p>информация недоступна</p>
-					<p>Продюсер?????</p>
-					<p>информация недоступна</p>
-					<p>Оператор?????</p>
-					<p>информация недоступна</p>
-					<p>Композитор?????</p>
-					<p>информация недоступна</p>
-					<p>Монтаж?????</p>
-					<p>информация недоступна</p>
+					<p>{ filterPersons(persons, "DIRECTOR")?.map((item : Person) => item.nameRu)}</p>
+					<p>Сценарий</p>
+					<p>{filterPersons(persons, "WRITER")?.map((item : Person) => item.nameRu).join(', ')}</p>
+					<p>Продюсер</p>
+					<p>{filterPersons(persons, "PRODUCER")?.map((item : Person) => item.nameRu).join(', ')}</p>
+					<p>Оператор</p>
+					<p>{filterPersons(persons, "OPERATOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
+					<p>Композитор</p>
+					<p>{filterPersons(persons, "COMPOSER")?.map((item : Person) => item.nameRu).join(', ')}</p>
+					<p>Монтаж</p>
+					<p>{filterPersons(persons, "EDITOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
 					<p>Сборы в мире</p>
 					<p className="movie-info__fees-world">$ 96 448</p>
 					<p>Премьера в России</p>
@@ -130,9 +146,14 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 				<p className="movie-info__reviews-total">{movie?.reviewsCount} рецензии</p>
 				<div className="movie-info__cast">
 					<h4 className="movie-info__cast-title">В главных ролях</h4>
-					<p className="movie-info__actor">Имя фамилия</p>
+					{filterPersons(persons, "ACTOR")?.map((item : Person, index : number) => {
+							return <p className="movie-info__actor" key={`actor-${index}`}>{`${item.nameRu}`}</p>
+					})}
+					<p className="movie-info__actor">и другие...</p>
 				</div>
 			</div>
 		</div>
+		<MovieDescription description={movie?.description} />
+		</>
 	)
 }
