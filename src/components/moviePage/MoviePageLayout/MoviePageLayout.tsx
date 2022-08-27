@@ -16,8 +16,6 @@ export const MoviePageLayout : FC<MovieIdProps> = ({ movieId }) => {
 			<MovieInfo movieId={ movieId }></MovieInfo>
 			<div className="movie-page__content">
 				<div className="movie-page__column-1">
-					<MovieDescription></MovieDescription>
-					<MovieRating />
 					<InterestingFacts movieId={ movieId }></InterestingFacts>
 					<UsersReviews movieId={ movieId }></UsersReviews>
 				</div>
