@@ -1,9 +1,9 @@
 import "./MovieCard.scss";
 import { IMovieCard } from "./types";
+import { NavLink } from "react-router-dom";
+import { FC } from "react";
 
-
-
-const MovieCard = ({nameRu, posterUrlPreview, year, genre, rating}: IMovieCard) => {
+const MovieCard : FC<IMovieCard> = ({ nameRu, posterUrlPreview, year, genre, rating, kinopoiskId }) => {
 
 	let imgClasses = 'movie-card__rating';
 
@@ -16,7 +16,8 @@ const MovieCard = ({nameRu, posterUrlPreview, year, genre, rating}: IMovieCard) 
 	}
 
 	return (
-		<div className="movie-card">
+		<NavLink to={`/movie/${kinopoiskId}`}>
+		<div className="movie-card" id={`${kinopoiskId}`} onClick={() => console.log(kinopoiskId)}>
 			<div className="movie-card__poster">
 				<div className="movie-card__image" style={{backgroundImage: `url(${posterUrlPreview})`}}></div>
 				<div className={imgClasses}>{rating}</div>
@@ -27,6 +28,7 @@ const MovieCard = ({nameRu, posterUrlPreview, year, genre, rating}: IMovieCard) 
 				<p className="movie-card__genre">{genre}</p>
 			</div>
 		</div>
+		</NavLink>
 	)
 }
 
