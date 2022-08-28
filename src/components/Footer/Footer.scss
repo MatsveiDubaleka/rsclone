@@ -28,10 +28,14 @@ a {
 }
 
 .git-links {
-  width: 30%;
+  width: 45%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+	a {
+		padding: 0 10px;
+	}
 }
 
 .git-links_link {
