@@ -18,7 +18,7 @@ export const SearchPageLayout = () => {
 				'X-API-KEY': token
 			}
 		}).then(({ data }) => !data.errors ? setResults(data.films) : setResults([]));
-	},[results]);
+	},[setResults]);
 
 	return (
 		<main className="search-page">
