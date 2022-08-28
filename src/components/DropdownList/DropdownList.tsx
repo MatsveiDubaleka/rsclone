@@ -4,6 +4,8 @@ import { IDropdownMovieList, IDropdownMovie } from "./types";
 
 const DropdownMovieItem = ({nameRu, nameEn, posterUrlPreview, year, rating, filmId} : IDropdownMovie) => {
 
+const infoArr = [nameEn, year].filter(item => item !== undefined).join(', ');
+
 	return(
 		<div className="dropdown-movie-item" data-id={filmId}>
 			<div className="dropdown-movie-item__poster" style={{backgroundImage: `url(${posterUrlPreview})`}}></div>
@@ -12,8 +14,7 @@ const DropdownMovieItem = ({nameRu, nameEn, posterUrlPreview, year, rating, film
 				{rating > 0 && (
 					<p className={`dropdown-movie-item__rating ${getClassForRaiting(rating)}`}>{rating},</p>
 				)}
-				<p className="dropdown-movie-item__title-en">{nameEn},</p>
-				<p className="dropdown-movie-item__year">{year}</p>
+				<p className="dropdown-movie-item__title-en-and-year">{infoArr}</p>
 			</div>
 		</div>
 	)
