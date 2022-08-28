@@ -1,17 +1,8 @@
+import { getClassForRaiting } from "../../utils/utilsFunctions";
 import "./DropdownList.scss";
 import { IDropdownMovieList, IDropdownMovie } from "./types";
 
 const DropdownMovieItem = ({nameRu, nameEn, posterUrlPreview, year, rating, filmId} : IDropdownMovie) => {
-
-	let ratingClass = 'dropdown-movie-item__rating';
-
-	if (Number(rating) < 5) {
-		ratingClass += ' negative';
-	} else if (Number(rating) < 7) {
-		ratingClass += ' neutral';
-	} else {
-		ratingClass += ' positive';
-	}
 
 	return(
 		<div className="dropdown-movie-item" data-id={filmId}>
@@ -19,7 +10,7 @@ const DropdownMovieItem = ({nameRu, nameEn, posterUrlPreview, year, rating, film
 			<div className="dropdown-movie-item__info">
 				<p className="dropdown-movie-item__title">{nameRu}</p>
 				{rating > 0 && (
-					<p className={ratingClass}>{rating},</p>
+					<p className={`dropdown-movie-item__rating ${getClassForRaiting(rating)}`}>{rating},</p>
 				)}
 				<p className="dropdown-movie-item__title-en">{nameEn},</p>
 				<p className="dropdown-movie-item__year">{year}</p>

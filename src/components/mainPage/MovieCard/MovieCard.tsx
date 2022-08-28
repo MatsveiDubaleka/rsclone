@@ -2,25 +2,16 @@ import "./MovieCard.scss";
 import { IMovieCard } from "./types";
 import { NavLink } from "react-router-dom";
 import { FC } from "react";
+import { getClassForRaiting } from "../../../utils/utilsFunctions";
 
 const MovieCard : FC<IMovieCard> = ({ nameRu, posterUrlPreview, year, genre, rating, kinopoiskId }) => {
 
-	let imgClasses = 'movie-card__rating';
-
-	if (rating < 5) {
-		imgClasses += ' negative';
-	} else if (rating < 7) {
-		imgClasses += ' neutral';
-	} else {
-		imgClasses += ' positive';
-	}
-
 	return (
 		<NavLink to={`/movie/${kinopoiskId}`}>
-		<div className="movie-card" id={`${kinopoiskId}`} onClick={() => console.log(kinopoiskId)}>
+		<div className="movie-card" id={`${kinopoiskId}`}>
 			<div className="movie-card__poster">
 				<div className="movie-card__image" style={{backgroundImage: `url(${posterUrlPreview})`}}></div>
-				<div className={imgClasses}>{rating}</div>
+				<div className={`movie-card__rating ${getClassForRaiting(rating)}`}>{rating}</div>
 			</div>
 			<p className="movie-card__title">{nameRu}</p>
 			<div className="movie-card__info">

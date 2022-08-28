@@ -3,6 +3,7 @@ import { MovieCardRatingSet } from '../MovieCardRatingSet/MovieCardRatingSet';
 import { IDropdownMovie, IDropdownMovieList } from './types';
 import "./MovieCardFlat.scss"
 import { NavLink } from 'react-router-dom';
+import { getClassForRaiting } from '../../../utils/utilsFunctions';
 
 const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPreview, year, rating, filmId, filmLength, genres, countries}) => {
 	const[elem, setElem] = useState(false);
@@ -17,7 +18,7 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 			<p className='movie-card-flat__number'>{num + 1}</p>
 			<div className="movie-card-flat__poster">
 				<div className="movie-card-flat__poster-image" style={{backgroundImage: `url(${posterUrlPreview})`}}>
-					<div className={`movie-card-flat__poster-rating ${rating < 5 ? 'negative' : rating > 7 ? 'positive' : ''}`}>
+					<div className={`movie-card-flat__poster-rating ${getClassForRaiting(rating)}`}>
 						{String(rating) !== 'null' ? rating : '-'}
 					</div>
 				</div>
@@ -32,7 +33,7 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 				</div>
 				<p className='movie-card-flat__genre'>Жанр: {genresArray}</p>
 			</div>
-				<p className={`movie-card-flat__rating ${rating < 5 ? 'negative' : rating > 7 ? 'positive' : ''}`}>
+				<p className={`movie-card-flat__rating ${getClassForRaiting(rating)}`}>
 					{String(rating) !== 'null' ? rating : '-'}
 				</p> 
 			<div className='movie-card-flat__buttons'>
