@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { getData } from '../../../utils/config';
 import { MovieDescription } from '../MovieDescription/MovieDescription';
 import { MovieIdProps } from '../MoviePageLayout/MoviePageLayout';
+import { MovieRating } from '../MovieRating/MovieRating';
 import { MovieRatingSet } from '../MovieRatingSet/MovieRatingSet';
 import "./MovieInfo.scss";
 import { filterPersons, findBudget, findDWorldPremiere, formatAge, formatData } from './utils';
@@ -179,6 +180,7 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 			</div>
 		</div>
 		<MovieDescription description={movie?.description} />
+		<MovieRating movie={movie}/>
 		</>
 	)
 }

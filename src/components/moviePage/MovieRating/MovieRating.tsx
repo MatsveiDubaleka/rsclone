@@ -1,19 +1,28 @@
 import "./MovieRating.scss";
 import ReactStars from "react-rating-stars-component";
+import { Movie } from "../MovieInfo/MovieInfo";
+import { FC } from "react";
 
-export const MovieRating = () => {
+type MovieRatingProps = {
+	movie: Movie;
+}
 
-	const rating = 9.8; // TODO: Take from api
+export const MovieRating : FC<MovieRatingProps> = ({movie}) => {
+
+	// const rating = 9.8; // TODO: Take from api
 
 	let ratingStyles = "movie-rating__content_rating_num";
 
-	if (rating < 5) {
+if (movie?.ratingKinopoisk) {
+	if (movie.ratingKinopoisk < 5) {
 		ratingStyles += " negative";
-	} else if (rating < 7) {
+	} else if (movie.ratingKinopoisk < 7) {
 		ratingStyles += " neutral";
 	} else {
 		ratingStyles += " positive";
 	}
+}
+console.log(movie.ratingKinopoisk);
 
 	return (
 		<div className="movie-rating">
@@ -26,7 +35,7 @@ export const MovieRating = () => {
 						a11y={true}
 						isHalf={true}
 						edit={false}
-						value={rating}
+						value={movie.ratingKinopoisk}
 					/>
 				</div>
 				<div className="movie-rating__content_stars-numbers">
@@ -42,12 +51,12 @@ export const MovieRating = () => {
 					<span>10</span>
 				</div>
 				<div className="movie-rating__content_rating">
-					<div className={ratingStyles}>{rating}</div>
-					<div className="movie-rating__content_rating_sum">322 оценки</div>
+					<div className={ratingStyles}>{movie.ratingKinopoisk}</div>
+					<div className="movie-rating__content_rating_sum">{movie.ratingKinopoiskVoteCount} оценки</div>
 				</div>
 				<div className="movie-rating__content_rating-imdb">
-					<span className="movie-rating__content_rating-imdb_num">IMDb: 5.40</span>
-					<span className="movie-rating__content_rating-imdb_sum">94 оценки</span>
+					<span className="movie-rating__content_rating-imdb_num">IMDb: {movie.ratingImdb}</span>
+					<span className="movie-rating__content_rating-imdb_sum">{movie.ratingImdbVoteCount} оценки</span>
 				</div>
 			</div>
 		</div>
