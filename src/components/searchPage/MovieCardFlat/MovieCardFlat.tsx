@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { MovieCardRatingSet } from '../MovieCardRatingSet/MovieCardRatingSet';
 import { IDropdownMovie, IDropdownMovieList } from './types';
 import "./MovieCardFlat.scss"
+import { NavLink } from 'react-router-dom';
 
-const MovieCardFlat = ({num, nameRu, nameEn, posterUrlPreview, year, rating, filmId, filmLength, genres, countries} : IDropdownMovie) => {
+const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPreview, year, rating, filmId, filmLength, genres, countries}) => {
 	const[elem, setElem] = useState(false);
 
 	return (
-		<li className="movie-card-flat" id={`${filmId}`}>
+		<NavLink to={`/movie/${filmId}`}>
+		<li className="movie-card-flat" id={`${filmId}`} onClick={() => console.log(filmId)}>
 			<p className='movie-card-flat__number'>{num + 1}</p>
 			<div className="movie-card-flat__poster">
 				<div className="movie-card-flat__poster-image" style={{backgroundImage: `url(${posterUrlPreview})`}}>
@@ -23,10 +25,8 @@ const MovieCardFlat = ({num, nameRu, nameEn, posterUrlPreview, year, rating, fil
 				</div>
 				<div className='movie-card-flat__info-sub'>
 					<p className='movie-card-flat__country'>Страна: {countries.map(x=>x.country + ', ')}</p>
-					{/* <p className='movie-card-flat__director'>Режиссёр: <span>Фрэнк Дарбонт</span></p> */}
 				</div>
 				<p className='movie-card-flat__genre'>Жанр: {genres.map(x=>x.genre + ', ')}</p>
-				{/* <p className='movie-card-flat__cast'>Описание: <span>{description}</span></p> */}
 			</div>
 			<p className='movie-card-flat__rating-imdb rating_good'>{rating}</p>
 			<div className='movie-card-flat__buttons'>
@@ -39,6 +39,7 @@ const MovieCardFlat = ({num, nameRu, nameEn, posterUrlPreview, year, rating, fil
 			</div>
 			{elem?<MovieCardRatingSet />:null}
 		</li>
+		</NavLink>
 	)
 }
 
@@ -51,7 +52,7 @@ const MovieCardFlatList = ({movies} : IDropdownMovieList) => {
 					nameEn={movie.nameEn} year={movie.year}
 					rating={movie.rating} posterUrlPreview={movie.posterUrlPreview}
 					filmLength={movie.filmLength} genres={movie.genres}
-					countries={movie.countries} key={`dropdown-movie-item-${movie.filmId}`} />
+					countries={movie.countries} filmId={movie.filmId} key={`dropdown-movie-item-${movie.filmId}`} />
 				})}
 			</ul>
 	)

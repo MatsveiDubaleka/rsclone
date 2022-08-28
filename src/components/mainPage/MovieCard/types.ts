@@ -3,5 +3,6 @@ export interface IMovieCard {
 	posterUrlPreview: string,
 	year: number,
 	genre: string,
-	rating: number
+	rating: number,
+	kinopoiskId: number
 }
