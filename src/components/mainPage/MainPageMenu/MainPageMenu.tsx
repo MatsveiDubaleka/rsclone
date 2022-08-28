@@ -5,7 +5,7 @@ import { INavItemDataArray } from "../../SideNavigation/types";
 const mainPageNavData : INavItemDataArray = [
   {
     title: "Главная",
-    path: '/main',
+    path: '/',
     icon: 'home-menu-icon',
   },
   {
