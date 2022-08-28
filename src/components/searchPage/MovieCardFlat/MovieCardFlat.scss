@@ -2,6 +2,10 @@ $color-brand-light: rgba(255, 102, 0, 0.13);
 $color-background-hover: #f7f7f7;
 $color-dark-text: #333333;
 
+$color-positive: #3BB33B;
+$color-neutral: #777777;
+$color-negative: #FF0000;
+
 * {
 	padding: 0;
 	margin: 0;
@@ -59,7 +63,7 @@ $color-dark-text: #333333;
 		text-align: center;
 		width: 32px;
 		height: 20px;
-		background-color: #3BB33B;
+		background-color: $color-neutral;
 		position: absolute;
 		z-index: 5;
 		color: #fff;
@@ -69,6 +73,14 @@ $color-dark-text: #333333;
 		border-radius: 2px;
 		left: -5px;
 		top: 7px;
+
+		&.positive {
+			background-color: $color-positive;
+		}
+
+		&.negative {
+			background-color: $color-negative;
+		}
 	}
 	
 	&__info {
@@ -85,10 +97,11 @@ $color-dark-text: #333333;
 	}
 
 	&__title-ru {
-		font-size: 18px;
+		font-size: 16px;
 		color: #000;
-		line-height: 30px;
+		line-height: 24px;
 		font-weight: 700;
+		margin-bottom: 4px;
 	}
 
 	&__info-main {
@@ -102,12 +115,20 @@ $color-dark-text: #333333;
 		gap: 5px;
 	}
 
-	&__rating-imdb {
-		color: #3BB33B;
+	&__rating {
+		color: $color-neutral;
 		font-size: 18px;
 		font-weight: 700;
 		line-height: 30px;
-		width: 100px;
+		width: 70px;
+
+		&.positive {
+			color: $color-positive;
+		}
+
+		&.negative {
+			color: $color-negative;
+		}
 	}
 
 	&__buttons {
