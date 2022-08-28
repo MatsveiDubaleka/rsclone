@@ -13,7 +13,7 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 
 	return (
 		<NavLink to={`/movie/${filmId}`}>
-		<li className="movie-card-flat" id={`${filmId}`} onClick={() => console.log(filmId)}>
+		<li className="movie-card-flat" id={`${filmId}`}>
 			<p className='movie-card-flat__number'>{num + 1}</p>
 			<div className="movie-card-flat__poster">
 				<div className="movie-card-flat__poster-image" style={{backgroundImage: `url(${posterUrlPreview})`}}>
