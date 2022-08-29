@@ -25,8 +25,8 @@ export const SearchPageLayout = () => {
 			<MainPageMenu />
 			<div className="search-page__content">
 				<div className="search-page__content_header">
-					<div className="search-page__content_header_search-word">Поиск: {myParam?.toUpperCase()}</div>
-					<div className="search-page__content_header_total-results">Результаты: {results.length}</div>
+					<div className="search-page__content_header_search-word">Поиск: <span>{myParam?.toUpperCase()}</span></div>
+					<div className="search-page__content_header_total-results">Результаты: <span>{results.length}</span></div>
 				</div>
 					<MovieCardFlatList movies={results} />
 			</div>

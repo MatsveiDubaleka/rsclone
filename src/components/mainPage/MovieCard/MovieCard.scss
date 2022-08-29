@@ -49,13 +49,11 @@ $color-text: rgba(0, 0, 0, 0.4);
 		line-height: 20px;
 		border-radius: 2px;
 		text-align: center;
+		background-color: $color-neutral;
+
 
 		&.positive {
 			background-color: $color-positive;
-		}
-
-		&.neutral {
-			background-color: $color-neutral;
 		}
 
 		&.negative {

@@ -35,3 +35,8 @@ $color-dark-text: #333333;
 		}
 	}
 }
+
+.search-page__content_header_search-word span,
+.search-page__content_header_total-results span {
+		font-weight: 700;
+}
