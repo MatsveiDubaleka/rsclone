@@ -9,34 +9,31 @@ type MovieRatingProps = {
 
 export const MovieRating : FC<MovieRatingProps> = ({movie}) => {
 
-	// const rating = 9.8; // TODO: Take from api
-
 	let ratingStyles = "movie-rating__content_rating_num";
 
-if (movie?.ratingKinopoisk) {
-	if (movie.ratingKinopoisk < 5) {
-		ratingStyles += " negative";
-	} else if (movie.ratingKinopoisk < 7) {
-		ratingStyles += " neutral";
-	} else {
-		ratingStyles += " positive";
+	if (movie?.ratingKinopoisk) {
+		if (movie.ratingKinopoisk < 5) {
+			ratingStyles += " negative";
+		} else if (movie.ratingKinopoisk < 7) {
+			ratingStyles += " neutral";
+		} else {
+			ratingStyles += " positive";
+		}
 	}
-}
-console.log(movie.ratingKinopoisk);
 
 	return (
 		<div className="movie-rating">
 			<div className="movie-rating__title">Рейтинг фильма</div>
 			<div className="movie-rating__content">
 				<div className="movie-rating__content_stars">
-					<ReactStars
+					{movie.ratingKinopoisk && <ReactStars
 						count={10}
 						size={30}
 						a11y={true}
 						isHalf={true}
 						edit={false}
 						value={movie.ratingKinopoisk}
-					/>
+					/>}
 				</div>
 				<div className="movie-rating__content_stars-numbers">
 					<span>1</span>
