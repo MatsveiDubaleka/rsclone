@@ -4,6 +4,9 @@ import { token } from '../../../utils/token';
 import ReactPlayer from 'react-player';
 import "./MovieVideo.scss";
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const movieTrailer = require('movie-trailer');
+
 const MovieVideo = () => {
 	const [trailer, setTrailer] = useState<any>("");
 	const [videoURL, setVideoURL] = useState<string>("");
@@ -19,19 +22,16 @@ const MovieVideo = () => {
 				'X-API-KEY': token
 			}
 		}).then(({ data }) => {
-			const filteredData = data.items.filter((x: any): any => x.nameEn.length > 0);
+			const filteredData = data.items.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
 			const len: number = Math.floor(Math.random() * filteredData.length);
 			setTrailer(filteredData[len])});
 	}, []);
 
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	const movieTrailer = require('movie-trailer');
+	const nameEn: string = trailer?.nameEn;
 
-	const nameEn: string = trailer.nameEn;
-	const nameRu: string = trailer.nameRu;
-
-	movieTrailer(nameEn ? nameEn : nameRu)
-	.then((response: string) => setVideoURL(response));
+	movieTrailer(nameEn)
+		.then((response: string): void => setVideoURL(response))
+		.catch((error: string): void => console.log(error));
 
 	return (
 		<div className="movie-video">
