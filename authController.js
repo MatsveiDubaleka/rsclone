@@ -1,5 +1,6 @@
 const User = require('./models/User')
 const Role = require('./models/Role')
+const Reviews = require('./models/Reviews')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
@@ -67,15 +68,35 @@ class authController {
   
   async getUsers(req, res) {
     try {
-      /*Find user*/
       const users =await User.find()
-      
-      
-/*      const userRole = new Role()
+      res.json(users)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  
+  async postReview(req, res) {
+    try {
+      const {title, author, text, type} = req.body
+      const review = new Reviews({title, author, text, type, date: (new Date()).toLocaleString()})
+      review
+      .save()
+      .then((result) => res.send(`Review was succesfully created, \n ${result}`))
+      .catch((e) => console.error(e))
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  
+  async getReviews(req, res) {
+    try {
+      const reviews =await Reviews.find()
+      res.json(reviews)
+  
+      /*      const userRole = new Role()
       const adminRole = new Role({value: "ADMIN"})
       await userRole.save()
       await adminRole.save()*/
-      res.json(users)
     } catch (e) {
       console.error(e)
     }
