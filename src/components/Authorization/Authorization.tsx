@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Authorization.scss';
 
 const Authorization = () => {
@@ -5,7 +6,7 @@ const Authorization = () => {
     <div className="authorization-wrapper">
       <div className="authorization">
         <div className="authorization-card">
-          <button className="authorization-card__button-back"></button>
+					<Link to={'/'}><button className="authorization-card__button-back"></button></Link>
           <div className="authorization-card__logo-img"></div>
           <span className="authorization-card__tooltip">Войдите или зарегестрируйтесь</span>
           <form action="">

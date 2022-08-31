@@ -63,7 +63,7 @@ const Header = () => {
           <div className="user-auth">
           <button className="avatar-btn" hidden></button>
             <span className="flag" id="flag" hidden></span>
-            <a className="enter-link">Вход</a>
+						<Link to={`/autorization`}><p className="enter-link">Вход</p></Link>
           </div>
         </div>
       </header>
