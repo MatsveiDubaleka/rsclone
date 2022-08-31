@@ -13,7 +13,7 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 	const genresArray = genres.map(item => item.genre).join(', ');
 
 	return (
-		<NavLink to={`/movie/${filmId}`}>
+		
 		<li className="movie-card-flat" id={`${filmId}`}>
 			<p className='movie-card-flat__number'>{num + 1}</p>
 			<div className="movie-card-flat__poster">
@@ -24,7 +24,9 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 				</div>
 			</div>
 			<div className='movie-card-flat__info'>
-				<h3 className='movie-card-flat__title-ru'>{nameRu}</h3>
+				<NavLink to={`/movie/${filmId}`}>
+					<h3 className='movie-card-flat__title-ru'>{nameRu}</h3>
+				</NavLink>
 				<div className='movie-card-flat__info-main'>
 					<p>{infoMainArray}</p>
 				</div>
@@ -46,7 +48,7 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 			</div>
 			{elem?<MovieCardRatingSet />:null}
 		</li>
-		</NavLink>
+		
 	)
 }
 

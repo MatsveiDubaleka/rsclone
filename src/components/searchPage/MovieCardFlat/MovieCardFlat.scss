@@ -102,6 +102,10 @@ $color-negative: #FF0000;
 		line-height: 24px;
 		font-weight: 700;
 		margin-bottom: 4px;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	&__info-main {

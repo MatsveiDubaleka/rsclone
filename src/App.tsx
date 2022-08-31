@@ -12,8 +12,6 @@ const App = () => {
 
 	const location = useLocation().pathname;
 
-	console.log('app location ---- ', location);
-
   return (
     <div className="App">
 			<Routes>
