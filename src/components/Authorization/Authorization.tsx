@@ -13,8 +13,8 @@ const Authorization = () => {
             <input name="login" type="text" placeholder="Логин и email" className="authorization-card__input login-auth" id="login-auth"/>
             <input name="password" type="text" placeholder="Пароль" className="authorization-card__input password-auth" id="password-auth"/>
           </form>
-          <button className="authorization-card__button-auth"></button>
-          <button className="authorization-card__button-auth"></button>
+          <button className="authorization-card__button-auth">Войти</button>
+          <button className="authorization-card__button-auth">Зарегистрироваться</button>
         </div>
       </div>
     </div>
