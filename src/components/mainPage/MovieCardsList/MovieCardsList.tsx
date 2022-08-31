@@ -73,7 +73,6 @@ const MovieCardsList: FC<MovieCardList> = ({title, url, listType}) => {
 			<h2 className="movie-cards-list__title">{title}</h2>
 			<div className="movie-cards-list__movies">
 				{movies?.map((movie: any) : JSX.Element => {
-					console.log('id:', movie.kinopoiskId || movie.filmId);
 					return <MovieCard kinopoiskId={movie.kinopoiskId || movie.filmId} nameRu={movie.nameRu} posterUrlPreview={movie.posterUrlPreview} year={movie.year} rating={movie.rating} genre={movie.genres[0].genre} key={`movie-card-${movie.nameRu}`}></MovieCard>
 				})}
 			</div>
