@@ -28,10 +28,13 @@ export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
 		window.scrollTo(0, document.body.scrollHeight);
 	}
 
+
 	return(
 		<div className="users-reviews">
 			<h3 className="users-reviews__title">Рецензии зрителей</h3>
-			<button className="users-reviews__write-review-btn" onClick={scrollToReviewForm}>Написать рецензию</button>
+			{reviewsData?.total !== 0 &&
+				<button className="users-reviews__write-review-btn" onClick={scrollToReviewForm}>Написать рецензию</button>
+			}
 				<div className="users-reviews__content">
 					<div className="users-reviews__reviews">
 							{reviewsData?.items?.splice(0, 3).map((item : Review, index:number) => {
