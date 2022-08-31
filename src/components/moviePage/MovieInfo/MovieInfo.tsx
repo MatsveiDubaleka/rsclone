@@ -145,8 +145,12 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 					<p>{filterPersons(persons, "COMPOSER")?.map((item : Person) => item.nameRu).join(', ')}</p>
 					<p>Монтаж</p>
 					<p>{filterPersons(persons, "EDITOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
-					<p>Бюджет</p>
-					<p className="movie-info__fees-world">{findBudget(budget, "BUDGET")}</p>
+					{budget?.items.length !== 0 && 
+						<>
+							<p>Бюджет</p>
+							<p className="movie-info__fees-world">{findBudget(budget, "BUDGET")}</p>
+						</>
+					}
 					{budgetRus && 
 						<>
 							<p>Сборы в России</p>

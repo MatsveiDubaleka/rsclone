@@ -10,8 +10,7 @@ export const SearchPageLayout = () => {
 
 	const urlParams: URLSearchParams = new URLSearchParams(window.location.search);
 	const myParam: string | null = urlParams.get('search');
-	console.log(myParam);
-
+	
 	useEffect(()=> {
 		axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${myParam}&page=1`, {
 			headers: {

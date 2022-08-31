@@ -20,9 +20,6 @@ export const MoviePageLayout = () => {
 					<InterestingFacts movieId={ Number(id) }></InterestingFacts>
 					<UsersReviews movieId={ Number(id) }></UsersReviews>
 				</div>
-				<div className="movie-page__column-2">
-					Этот блок под вопросом пусть пока будет тут
-				</div>
 			</div>
 		</main>
 	)
