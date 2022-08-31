@@ -2,8 +2,12 @@ const mongoose = require("mongoose")
 const express = require("express")
 const autoRouter = require('./authRouter')
 const PORT = process.env.PORT || 5000
+const cors = require('cors');
+
 
 const app = express()
+
+app.options('*', cors()) // include before other routes
 
 app.use(express.json())
 app.use('/auth', autoRouter)
