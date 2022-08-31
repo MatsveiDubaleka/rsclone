@@ -7,6 +7,10 @@ const cors = require('cors');
 
 const app = express()
 
+app.use(cors({
+  credentials: true,
+}));
+
 app.options('*', cors()) // include before other routes
 
 app.use(express.json())
