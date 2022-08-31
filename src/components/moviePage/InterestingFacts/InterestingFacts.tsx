@@ -35,9 +35,6 @@ export const InterestingFacts :FC<MovieIdProps> = ({ movieId }) => {
     getData(`v2.2/films/${movieId}/facts`, setFacts);
   }, [setFacts]);
 
-	console.log(facts?.items?.length);
-	console.log(Boolean(facts?.items));
-
 	const factsLength = facts?.items?.length;
 
 	return(
