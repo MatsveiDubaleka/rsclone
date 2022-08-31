@@ -11,7 +11,10 @@ const MovieCard : FC<IMovieCard> = ({ nameRu, posterUrlPreview, year, genre, rat
 		<div className="movie-card" id={`${kinopoiskId}`}>
 			<div className="movie-card__poster">
 				<div className="movie-card__image" style={{backgroundImage: `url(${posterUrlPreview})`}}></div>
-				<div className={`movie-card__rating ${getClassForRaiting(rating)}`}>{rating}</div>
+				{rating && 
+				<>
+					<div className={`movie-card__rating ${getClassForRaiting(rating)}`}>{rating}</div>
+				</>}
 			</div>
 			<p className="movie-card__title">{nameRu}</p>
 			<div className="movie-card__info">
