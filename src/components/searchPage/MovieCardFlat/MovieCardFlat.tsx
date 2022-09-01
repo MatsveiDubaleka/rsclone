@@ -52,7 +52,7 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 			</div>
 			{elem?<MovieCardRatingSet />:null}
 		</li>
-		
+		</NavLink>
 	)
 }
 
