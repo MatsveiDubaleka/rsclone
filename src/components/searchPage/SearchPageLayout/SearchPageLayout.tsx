@@ -10,11 +10,6 @@ import { getDataItems } from "../../../utils/config";
 export const SearchPageLayout = () => {
 	const [results, setResults] = useState([]);
 	const location = useLocation();
-<<<<<<< HEAD
-=======
-	// const urlParams: URLSearchParams = new URLSearchParams(window.location.search);
-	// const myParam: string | null = urlParams.get('search');
->>>>>>> 109a01e26a7ef4294256bbf87fac201357416c3e
 	
 	const myParam: string | null = new URLSearchParams(location.search).get("search");
 
@@ -39,8 +34,6 @@ useEffect(()=> {
 		getDataItems(`v2.2/films?ratingFrom=${ratingFrom ? ratingFrom : "0"}&ratingTo=${ratingTo ? ratingTo : "10"}&yearFrom=${yearFrom ? yearFrom : "1900"}&yearTo=${yearTo ? yearTo : "2022"}&keyword=${keyword ? keyword : ""}&page=1`, setResults);
 	}
 	},[setResults]);
-
-	console.log(results)
 
 	return (
 		<main className="search-page">
