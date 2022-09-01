@@ -10,17 +10,17 @@ const userAccountNavData : INavItemDataArray = [
   },
   {
     title: "Буду смотреть",
-    path: '/to-watch',
+    path: '/my-account/to-watch',
     icon: 'will-watch-icon',
   },
   {
     title: "Мои оценки",
-    path: '/watched',
+    path: '/my-account/watched',
     icon: 'my-ratings-icon',
   },
 	{
     title: "Мои рецензии",
-    path: '/my-reviews',
+    path: '/my-account/my-reviews',
     icon: 'my-reviews-icon',
   },
 ]

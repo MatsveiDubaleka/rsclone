@@ -35,12 +35,20 @@ export const InterestingFacts :FC<MovieIdProps> = ({ movieId }) => {
     getData(`v2.2/films/${movieId}/facts`, setFacts);
   }, [setFacts]);
 
+	const factsLength = facts?.items?.length;
+
 	return(
-		<div className="interesting-facts">
-		<h3 className="interesting-facts__title">Знаете ли вы, что...</h3>
-		{facts?.items?.slice(0, 5).map((fact : Fact, index: number) => {
-			return <InterestingFact key={`fact-${index}`} fact={fact}/>
-		})}
-	</div>
+		<>
+		{factsLength ? 
+			<div className="interesting-facts">
+				<h3 className="interesting-facts__title">Знаете ли вы, что...</h3>
+				{facts?.items?.slice(0, 5).map((fact : Fact, index: number) => {
+					return <InterestingFact key={`fact-${index}`} fact={fact}/>
+				})}
+			</div>
+		: 
+		<></>
+		}
+		</>
 	)
 }
