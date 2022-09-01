@@ -4,8 +4,10 @@ export interface IDropdownMovie {
 	nameEn: string,
 	posterUrlPreview: string,
 	year: number,
-	rating: number,
+	rating?: number,
+	ratingKinopoisk?: number,
 	filmId?: number,
+	kinopoiskId?: number,
 	filmLength?: string,
 	genres: [
 		{
