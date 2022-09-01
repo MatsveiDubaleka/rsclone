@@ -1,10 +1,11 @@
-@import '../Authorization/Authorization.scss';
+@import '../../Authorization/Authorization.scss';
 
 // COLORS
 $blackTitle: #000000;
 $labelGreyColor: rgba(0, 0, 0, 0.4);
+$focusColor:rgba(0, 0, 0, 0.05);
 
-input {
+@mixin input {
 	height: 54px;
 	outline: none;
 	border: 1px solid $borderColor;
@@ -60,28 +61,26 @@ label {
 		&_film-title,
 		&_film-country,
 		&_film-genre {
+			@include input();
 			width: 450px;
 			margin-right: 50px;
 		}
 
-		&_film-genre{
-			position: relative;
-		
-			&_down-icon {
-				position: absolute;
-				top: 453px;
-				right: 505px;
-				width: 20px;
-				height: 20px;
-				background-repeat: no-repeat;
-				background-size: contain;
-				background-image: url('../../assets/icons/down.svg');
-				cursor: pointer;
+		&_film-genre,
+		&_film-country {
+			background-image: url('../../../assets/icons/down.svg');
+			background-repeat: no-repeat;
+			background-position: 95% center;
+			appearance: none;
+			
+			&_option {
+				color: $blackTitle;
 			}
 		}
 
 		&_film-year,
 		&_film-rating {
+			@include input();
 			width: 160px;
 			margin-right: 25px;
 		}
@@ -90,6 +89,7 @@ label {
 		&_film-maxYear,
 		&_film-minRating,
 		&_film-maxRating {
+			@include input();
 			width: 90px;
 		}
 
@@ -99,6 +99,18 @@ label {
 			margin-left: 25px;
 		}
 
+		&_film-title:focus,
+		&_film-country:focus,
+		&_film-genre:focus,
+		&_film-year:focus,
+		&_film-rating:focus,
+		&_film-minYear:focus,
+		&_film-maxYear:focus,
+		&_film-minRating:focus,
+		&_film-maxRating:focus {
+			background-color: $focusColor;
+			color: $blackTitle;
+		}
 
 		&_label-minYear::after,
 		&_label-minRating::after {

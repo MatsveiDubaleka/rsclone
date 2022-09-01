@@ -46,8 +46,10 @@ const Header = () => {
             value={query}
             onChange={onChange}
             />
-            
-            <span className="search-settings" id="search-settings"></span>
+
+            <Link to={'/s'}>
+              <button onClick={()=>setResults([])} className="search-settings" id="search-settings"></button>
+            </Link>
 
             <Link to={`/searchPage?search=${searchWord}`}>
               <button onClick={()=>setResults([])} className="search-loop" id="search-loop"></button>
