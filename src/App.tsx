@@ -22,7 +22,7 @@ const App = () => {
         <Route path='/' element={<MainPageLayout/>}/>
         <Route path='/searchPage' element={<SearchPageLayout />}/>
         <Route path='movie/:id' element={<MoviePageLayout />}/>
-				<Route path='/my-account' element={<UserAccountPageLayout/>}/>
+				<Route path='/my-account/*' element={<UserAccountPageLayout/>}/>
       </Routes>
 			{location === '/autorization' ? <></> : <Footer /> }
     </div>
