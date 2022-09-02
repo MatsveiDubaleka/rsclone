@@ -4,12 +4,11 @@ import { token } from '../../../utils/token';
 import ReactPlayer from 'react-player';
 import "./MovieVideo.scss";
 import { NavLink } from 'react-router-dom';
-
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const movieTrailer = require('movie-trailer');
 
 const MovieVideo = () => {
-	const [trailer, setTrailer] = useState<any>("");
+	const [trailer, setTrailer] = useState<any>([]);
 	const [videoURL, setVideoURL] = useState<string>("");
 	
 	const currentYear: string = new Date().getFullYear().toString();
@@ -28,11 +27,13 @@ const MovieVideo = () => {
 			setTrailer(filteredData[len])});
 	}, []);
 
-	const nameEn: string = trailer?.nameEn;
+	const nameEn: string = trailer?.nameEn; // get english film title
 
 	movieTrailer(nameEn)
-		.then((response: string): void => setVideoURL(response))
-		.catch((error: string): void => console.warn(error));
+		.then((response: string): void => {(response === null ? setVideoURL("https://youtu.be/5bqpcIX2VDQ") : setVideoURL(response))})
+		.catch((error: string): void => {
+			throw (error);
+		});
 	
 	return (
 		<div className="movie-video">
