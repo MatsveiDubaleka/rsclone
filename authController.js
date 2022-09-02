@@ -78,8 +78,8 @@ class authController {
   
   async postReview(req, res) {
     try {
-      const {kinopoiskId, title, author, description, type} = req.body
-      const review = new Reviews({kinopoiskId, title, author, description, type, date: (new Date()).toLocaleString()})
+      const {kinopoiskId, title, author, text, type} = req.body
+      const review = new Reviews({kinopoiskId, title, author, text, type, date: (new Date()).toLocaleString()})
       review
       .save()
       .then((result) => res.send(`Review was succesfully created, \n ${result}`))

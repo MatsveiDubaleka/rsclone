@@ -5,14 +5,9 @@ const PORT = process.env.PORT || 5000
 const cors = require('cors');
 require('dotenv').config();
 
-
 const app = express()
 
-app.use(cors({
-  credentials: true,
-}));
-
-app.options('*', cors()) // include before other routes
+app.use(cors()) // include before other routes
 
 app.use(express.json())
 app.use('/auth', autoRouter)
