@@ -1,6 +1,7 @@
 const User = require('./models/User')
 const Role = require('./models/Role')
 const Reviews = require('./models/Reviews')
+const Trailer = require('./models/Trailer')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
@@ -77,8 +78,8 @@ class authController {
   
   async postReview(req, res) {
     try {
-      const {kinopoiskId, title, author, text, type} = req.body
-      const review = new Reviews({kinopoiskId, title, author, text, type, date: (new Date()).toLocaleString()})
+      const {kinopoiskId, title, author, description, type} = req.body
+      const review = new Reviews({kinopoiskId, title, author, description, type, date: (new Date()).toLocaleString()})
       review
       .save()
       .then((result) => res.send(`Review was succesfully created, \n ${result}`))
@@ -102,5 +103,22 @@ class authController {
     }
   }
 }
+
+/*class Trailer {
+  async getTrailer {
+    try {
+    
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  async setTrailer {
+    try {
+    
+    } catch (e) {
+      console.error(e)
+    }
+  }
+}*/
 
 module.exports = new authController()

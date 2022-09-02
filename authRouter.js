@@ -11,7 +11,6 @@ router.post('/registration', [
 router.post('/reviews', [
     check('author', 'Author cant be empty').notEmpty(),
     check('title', 'Title cant be empty').notEmpty(),
-    check('text', 'Password should consists of more than 4 letters').isLength({min: 5, max: 250}),
     check('type', 'Type should be neutral|positive|negative').notEmpty(),
   ], controller.postReview)
 router.post('/login', controller.login)
