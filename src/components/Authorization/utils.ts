@@ -27,3 +27,7 @@ export async function tryRegistration(login : string, password : string) {
 	resp = await resp.json();
 	return(resp);
 }
+
+export const setUsernameToLocalStorage = (login: string) => {
+	localStorage.setItem("username", JSON.stringify(login));
+}

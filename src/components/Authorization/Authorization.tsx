@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Authorization.scss';
-import { tryLogin, tryRegistration } from './utils';
+import { setUsernameToLocalStorage, tryLogin, tryRegistration } from './utils';
 
 type AuthResponce = {
 	message?: string,
@@ -22,7 +22,6 @@ const toggleSignInVisible = () => {
 	isSignInVisible ? setIsSignVisible(false) : setIsSignVisible(true);
 }
 
-
 const handleLoginInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 	const target = e.target;
 	setLogin((target as HTMLInputElement).value);
@@ -42,7 +41,7 @@ const handleLoginBtn = async () => {
 			alert('такого пользователя не существует');
 		}
 	} else {
-		localStorage.setItem("user-info", JSON.stringify(login));
+		setUsernameToLocalStorage(login);
 		navigate("/my-account");
 	}
 }
@@ -50,14 +49,13 @@ const handleLoginBtn = async () => {
 const handleRegistrationBtn = async() => {
 	const resp = await tryRegistration(login, password);
 	if ((resp as AuthResponce).message?.includes('successfully')) {
-		localStorage.setItem("user-info", JSON.stringify(login));
+		setUsernameToLocalStorage(login);
 		console.log((resp as AuthResponce).message);
 		alert(`аккаунт ${login} успешно создан!`);
 		navigate("/my-account");
 	} else {
 		alert("К сожалению логин занят, попробуйте изменить его");
 	}
-		
 }
 
   return (
