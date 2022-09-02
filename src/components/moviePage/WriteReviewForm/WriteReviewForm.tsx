@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { getUsernameFromLocalStorage } from '../../../utils/utilsFunctions';
 import './WriteReviewForm.scss';
 
 export const WriteReviewForm = () => {
@@ -24,7 +25,7 @@ const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
 	return(
 		<div className="write-review">
-			<p className="write-review__username">Vasya</p>
+			<p className="write-review__username">{getUsernameFromLocalStorage()}</p>
 			<form className="review-form">
 				<select className="review-form__select" value={selectValue} onChange={handleSelectChange}>
 					<option value="review-type" disabled hidden>Тип рецензии</option>
