@@ -1,8 +1,9 @@
 const {Schema, model} = require('mongoose')
 
 const Reviews = new Schema ({
+  kinopoiskId: {type: Number, required: true},
   author: {type: String, required: true},
-  text: {type: String, required: true, unique: true},
+  description: {type: String, required: true, unique: true},
   title: {type: String, required: true, unique: true},
   type: {type: String, required: true},
   date: {type: String},
