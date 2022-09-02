@@ -7,7 +7,7 @@ export const UserData = () => {
 
 	const handleLogOutBtn = () => {
 		localStorage.removeItem('username');
-		navigation('/');
+		navigation('/autorization');
 	}
 
 	return(
