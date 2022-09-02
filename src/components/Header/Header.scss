@@ -138,6 +138,12 @@ h1 {
   @include backgroundRules();
 }
 
+.avatar-link {
+	&.hidden {
+		display: none;
+	}
+}
+
 .enter-link{
   display: flex;
   align-items: center;
@@ -146,6 +152,10 @@ h1 {
   font-weight: 700;
   color: $searchPlaceholderColor;
   cursor: pointer;
+
+	&.hidden {
+		display: none;
+	}
 }
 
 .enter-link:hover{
