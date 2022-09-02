@@ -1,7 +1,15 @@
+import { useNavigate } from "react-router";
 import { getUsernameFromLocalStorage } from "../../../utils/utilsFunctions";
 import "./UserData.scss";
 
 export const UserData = () => {
+	const navigation = useNavigate();
+
+	const handleLogOutBtn = () => {
+		localStorage.removeItem('username');
+		navigation('/');
+	}
+
 	return(
 		<div className="user-data">
 			<div className="user-data__avatar"></div>
@@ -24,7 +32,7 @@ export const UserData = () => {
 					</div>
 				</div>
 			</div>
-			<button className="user-data__logout-btn">Выйти</button>
+			<button className="user-data__logout-btn" onClick={handleLogOutBtn}>Выйти</button>
 		</div>
 	)
 }
