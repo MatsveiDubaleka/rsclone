@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUsernameFromLocalStorage, getUserReviewsByUser } from "../../../utils/utilsFunctions"
 import { Review, UserReviewCard } from "../../moviePage/UserReviewCard/UserReviewCard";
-import './UserReviews.scss';
+import './UserAccountReviews.scss';
 
 export const UserAccountReviews = () => {
 
