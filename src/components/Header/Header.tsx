@@ -4,6 +4,7 @@ import { token } from "../../utils/token";
 import './Header.scss';
 import DropdownList from '../DropdownList/DropdownList';
 import { Link } from "react-router-dom";
+import { getUsernameFromLocalStorage } from "../../utils/utilsFunctions";
 
 let searchResults: never[];
 let searchWord: string;
@@ -11,6 +12,7 @@ let searchWord: string;
 const Header = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  const [isLogIn] = useState(Boolean(getUsernameFromLocalStorage()));
 
   searchResults = results;
   searchWord = query;
@@ -21,12 +23,12 @@ const Header = () => {
     setQuery(e.target.value);
 
     axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${e.target.value}&page=1`, {
-			headers: {
-				'X-API-KEY': token
-			}
-		}).then(({ data }) => !data.errors ? setResults(data.films) : setResults([]));
+      headers: {
+        'X-API-KEY': token
+      }
+    }).then(({ data }) => !data.errors ? setResults(data.films) : setResults([]));
   };
-  
+
   return (
     <div className="header-wrapper">
       <header className="header">
@@ -63,9 +65,9 @@ const Header = () => {
           )}
           </div>
           <div className="user-auth">
-          <Link to={`/my-account`} hidden><button className="avatar-btn"></button></Link>
+          <Link to={`/my-account`} className={`avatar-link ${isLogIn ? '' : 'hidden'}`}><button className="avatar-btn"></button></Link>
           <span className="flag" id="flag" hidden></span>
-					<Link to={`/autorization`}><p className="enter-link">Вход</p></Link>
+          <Link to={`/autorization`} className={`enter-link ${isLogIn ? 'hidden' : ''}`}><p>Вход</p></Link>
           </div>
         </div>
       </header>

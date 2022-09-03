@@ -42,7 +42,7 @@ $inputFontSize: 18px;
   flex-direction: column;
   align-items: center;
   width: 350px;
-  height: 600px;
+  height: 500px;
   background: $whiteColor;
 
   &__button-back {
@@ -72,8 +72,29 @@ $inputFontSize: 18px;
   }
 
   &__tooltip {
-    font-size: 16px;
+		margin-top: 20px;
+    font-size: 20x;
     margin-bottom: 31px;
+		text-transform: uppercase;
+		color: $borderColor;
+
+
+		&_sign-in {
+			margin-right: 50px;
+			cursor: pointer;
+			&.active {
+				font-weight: 700;
+				color: black;
+			}
+		}
+
+		&_registration {
+			cursor: pointer;
+			&.active {
+				font-weight: 700;
+				color: black;
+			}
+		}
   }
 
   &__input {
@@ -86,13 +107,13 @@ $inputFontSize: 18px;
   }
 
   .password-auth {
-    margin-bottom: 65px;
+    margin-bottom: 25px;
   }
 
   &__button-auth {
     @include buttonSizes();
     background-color: $buttonColor;
-    margin-bottom: 20px;
+    margin: 30px 0px;
     cursor: pointer;
 		color: $whiteColor;
 		font-weight: 500;
