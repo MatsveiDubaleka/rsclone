@@ -1,7 +1,6 @@
 const User = require('./models/User')
 const Role = require('./models/Role')
 const Reviews = require('./models/Reviews')
-const Trailer = require('./models/Trailer')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
@@ -93,32 +92,10 @@ class authController {
     try {
       const reviews =await Reviews.find()
       res.json(reviews)
-  
-      /*      const userRole = new Role()
-      const adminRole = new Role({value: "ADMIN"})
-      await userRole.save()
-      await adminRole.save()*/
     } catch (e) {
       console.error(e)
     }
   }
 }
-
-/*class Trailer {
-  async getTrailer {
-    try {
-    
-    } catch (e) {
-      console.error(e)
-    }
-  }
-  async setTrailer {
-    try {
-    
-    } catch (e) {
-      console.error(e)
-    }
-  }
-}*/
 
 module.exports = new authController()

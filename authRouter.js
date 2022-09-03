@@ -2,7 +2,7 @@ const Router = require('express')
 const router = new Router();
 const controller = require('./authController')
 const {check} = require("express-validator")
-const authMiddleWare = require('./middlewaree/authMiddleware')
+const trailer = require('./trailers')
 
 router.post('/registration', [
   check('username', 'Username cant be empty').notEmpty(),
@@ -16,6 +16,7 @@ router.post('/reviews', [
 router.post('/login', controller.login)
 router.get('/users', controller.getUsers)
 router.get('/getReviews', controller.getReviews)
-
+router.get('/getTrailer', trailer.getTrailer)
+router.post('/trailer', trailer.setTrailer)
 
 module.exports = router;
