@@ -1,30 +1,46 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
-import { token } from '../../../utils/token';
+// import { token } from '../../../utils/token';
 import ReactPlayer from 'react-player';
 import "./MovieVideo.scss";
 import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const movieTrailer = require('movie-trailer');
 
+type TrailersArray = {
+	kinopoiskId: number;
+	nameEn: string;
+	nameRu: string;
+	year: number;
+}
+
 const MovieVideo = () => {
 	const [trailer, setTrailer] = useState<any>([]);
 	const [videoURL, setVideoURL] = useState<string>("");
 	
-	const currentYear: string = new Date().getFullYear().toString();
-	const currentMonth: string = new Date().toLocaleString('en', {       
-		month: 'long'       
-	}).toUpperCase();
+	// const currentYear: string = new Date().getFullYear().toString();
+	// const currentMonth: string = new Date().toLocaleString('en', {       
+	// 	month: 'long'       
+	// }).toUpperCase();
 
-	useEffect(() => {
-		axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${currentYear}&month=${currentMonth}`, {
+	useEffect((): void => {
+		axios.get<TrailersArray[]>(`https://rskinopoisk.herokuapp.com/auth/getTrailer`, {
 			headers: {
-				'X-API-KEY': token
+				'Content-Type': 'application/json'
 			}
-		}).then(({ data }) => {
-			const filteredData = data.items.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
-			const len: number = Math.floor(Math.random() * filteredData.length);
-			setTrailer(filteredData[len])});
+		}).then(({ data }: AxiosResponse<TrailersArray[]>): void => {
+				const filteredData: TrailersArray[] = data.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
+				const lastElement: number = filteredData.length-1;
+				setTrailer(filteredData[lastElement])})
+
+		// axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${currentYear}&month=${currentMonth}`, {
+		// 	headers: {
+		// 		'X-API-KEY': token
+		// 	}
+		// }).then(({ data }) => {
+		// 	const filteredData = data.items.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
+		// 	const len: number = Math.floor(Math.random() * filteredData.length);
+		// 	setTrailer(filteredData[len])})
 	}, []);
 
 	const nameEn: string = trailer?.nameEn; // get english film title
