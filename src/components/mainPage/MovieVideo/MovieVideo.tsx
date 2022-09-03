@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import { token } from '../../../utils/token';
 import ReactPlayer from 'react-player';
 import "./MovieVideo.scss";
-
+import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const movieTrailer = require('movie-trailer');
 
 const MovieVideo = () => {
-	const [trailer, setTrailer] = useState<any>("");
+	const [trailer, setTrailer] = useState<any>([]);
 	const [videoURL, setVideoURL] = useState<string>("");
 	
 	const currentYear: string = new Date().getFullYear().toString();
@@ -27,12 +27,14 @@ const MovieVideo = () => {
 			setTrailer(filteredData[len])});
 	}, []);
 
-	const nameEn: string = trailer?.nameEn;
+	const nameEn: string = trailer?.nameEn; // get english film title
 
 	movieTrailer(nameEn)
-		.then((response: string): void => setVideoURL(response))
-		.catch((error: string): void => console.log(error));
-
+		.then((response: string): void => {(response === null ? setVideoURL("https://youtu.be/5bqpcIX2VDQ") : setVideoURL(response))})
+		.catch((error: string): void => {
+			throw (error);
+		});
+	
 	return (
 		<div className="movie-video">
 			<div className="movie-video__react-player">
@@ -41,11 +43,11 @@ const MovieVideo = () => {
 				progressInterval={1000} width="940px" height="580px" />
 			</div>
 			<div className="movie-video__about">
-				<div className="movie-video__title">{trailer.nameRu ? trailer.nameRu : trailer.nameEn}</div>
+				<NavLink to={`/movie/${trailer.kinopoiskId}`}>
+					<div className="movie-video__title">{trailer.nameRu ? trailer.nameRu : trailer.nameEn}</div>
+				</NavLink>
 				<div className="movie-video__genre">{trailer.nameEn}</div>
 				<div className="movie-video__year">Год: {trailer.year}</div>
-				<div className="movie-video__country">Страна:</div>
-				<div className="movie-video__genre">Жанр:</div>
 			</div>
 		</div>
 	)
