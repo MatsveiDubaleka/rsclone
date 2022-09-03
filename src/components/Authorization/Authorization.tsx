@@ -10,51 +10,56 @@ type AuthResponce = {
 
 const Authorization = () => {
 
-const [login, setLogin] = useState('');
-const [password, setPassword] = useState('');
-const [isSignInVisible, setIsSignVisible] = useState(true);
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSignInVisible, setIsSignVisible] = useState(true);
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const toggleSignInVisible = () => {
-  isSignInVisible ? setIsSignVisible(false) : setIsSignVisible(true);
-}
+  const toggleSignInVisible = () => {
+    isSignInVisible ? setIsSignVisible(false) : setIsSignVisible(true);
+  }
 
-const handleLoginInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const target = e.target;
-  setLogin((target as HTMLInputElement).value);
-}
+  const handleLoginInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
+    setLogin((target as HTMLInputElement).value);
+  }
 
-const handlePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-  const target = e.target;
-  setPassword((target as HTMLInputElement).value);
-}
+  const handlePasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
+    setPassword((target as HTMLInputElement).value);
+  }
 
-const handleLoginBtn = async () => {
-  const resp = await tryLogin(login, password);
-  if ((resp as AuthResponce).message) {
-    if ((resp as AuthResponce).message?.includes('password')) {
-      alert('некорректный пароль');
+  const handleLoginBtn = async () => {
+    const resp : any = await tryLogin(login, password);
+    if ((resp as AuthResponce).message) {
+      if ((resp as AuthResponce).message?.includes('password')) {
+        alert('некорректный пароль');
+      } else {
+        alert('такого пользователя не существует');
+      }
     } else {
-      alert('такого пользователя не существует');
+      if (resp[1].find((item : any) => item === 'ADMIN')) {
+        setUsernameToLocalStorage(login);
+        navigate("/admin-account");
+      }
+      setUsernameToLocalStorage(login);
+      navigate("/my-account");
     }
-  } else {
-    setUsernameToLocalStorage(login);
-    navigate("/my-account");
   }
-}
 
-const handleRegistrationBtn = async() => {
-  const resp = await tryRegistration(login, password);
-  if ((resp as AuthResponce).message?.includes('successfully')) {
-    setUsernameToLocalStorage(login);
-    console.log((resp as AuthResponce).message);
-    alert(`аккаунт ${login} успешно создан!`);
-    navigate("/my-account");
-  } else {
-    alert("К сожалению логин занят, попробуйте изменить его");
+  const handleRegistrationBtn = async() => {
+    const resp = await tryRegistration(login, password);
+    console.log('RESPONCE', resp);
+    if ((resp as AuthResponce).message?.includes('successfully')) {
+      setUsernameToLocalStorage(login);
+      console.log((resp as AuthResponce).message);
+      alert(`аккаунт ${login} успешно создан!`);
+      navigate("/my-account");
+    } else {
+      alert("К сожалению логин занят, попробуйте изменить его");
+    }
   }
-}
 
   return (
     <div className="authorization-wrapper">
