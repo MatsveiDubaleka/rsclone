@@ -1,10 +1,10 @@
-const User = require('./models/User')
-const Role = require('./models/Role')
-const Reviews = require('./models/Reviews')
+const User = require('../models/User')
+const Role = require('../models/Role')
+const Reviews = require('../models/Reviews')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {validationResult} = require('express-validator')
-const {secret} = require('./config')
+const {secret} = require('../config')
 
 const generateAccessToken = (id, roles) => {
   const payload = {
@@ -59,7 +59,7 @@ class authController {
       }
       
       const token = generateAccessToken(user._id, user.roles)
-      return res.json({token})
+      return res.json([{token}, user.roles])
     } catch (e) {
       console.error(e)
       res.status(400).json({message: 'Login error'})
@@ -70,28 +70,6 @@ class authController {
     try {
       const users =await User.find()
       res.json(users)
-    } catch (e) {
-      console.error(e)
-    }
-  }
-  
-  async postReview(req, res) {
-    try {
-      const {kinopoiskId, title, author, text, type} = req.body
-      const review = new Reviews({kinopoiskId, title, author, text, type, date: (new Date()).toLocaleString()})
-      review
-      .save()
-      .then((result) => res.send(`Review was succesfully created, \n ${result}`))
-      .catch((e) => console.error(e))
-    } catch (e) {
-      console.error(e)
-    }
-  }
-  
-  async getReviews(req, res) {
-    try {
-      const reviews =await Reviews.find()
-      res.json(reviews)
     } catch (e) {
       console.error(e)
     }
