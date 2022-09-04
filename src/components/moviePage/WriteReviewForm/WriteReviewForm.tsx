@@ -9,11 +9,14 @@ export const WriteReviewForm = () => {
   const [textAreaValue, setTextAreaValue] = useState("Текст рецензии");
   const [selectValue, setSelectValue] = useState("review-type");
 
+  const [isFormHidden, setIsFormHidden] = useState(false);
+
   const getMovieIdFromPath = () => {
     const path = useLocation().pathname;
     const slashIndex = path.lastIndexOf('/');
-    return path.slice(-(slashIndex + 1));
+    return path.slice(slashIndex + 1);
   } 
+
   const movieIdFromPath = getMovieIdFromPath();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,37 +46,36 @@ export const WriteReviewForm = () => {
 
   const handleSubmitButton = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('button clicked');
     const body = getReviewBody();
-    console.log('body: ---', body)
-    await getRev();
-    // // console.log('button clicked');
     await postReview(body);
-    console.log('button clicked');
-    await getRev();
-  }
-  
-  async function getRev() {
-    const resp = await fetch(`https://rskinopoisk.herokuapp.com/reviews/getReviews`);
-    const reviews = await resp.json();
-    console.log(reviews)
+    setInputValue('');
+    setTextAreaValue('');
+    setSelectValue('');
+    setIsFormHidden(!isFormHidden);
   }
 
 	return(
-		<div className="write-review">
-			<p className="write-review__username">{getUsernameFromLocalStorage()}</p>
-			<form className="review-form">
-				<select className="review-form__select" value={selectValue} onChange={handleSelectChange}>
-					<option value="review-type" disabled hidden>Тип рецензии</option>
-					<option value="positive">Положительная</option>
-					<option value="neutral">Нейтральная</option>
-					<option value="negative">Отрицательная</option>
-				</select>
-				<input className="review-form__input" value={inputValue} onChange={handleInputChange}></input>
-				<textarea className="review-form__textarea" value={textAreaValue} onChange={handleTextAreaChange}></textarea>
-				<button className='review-form__btn' onClick={(e: any) => handleSubmitButton(e)}>Опубликовать рецензию</button>
-			</form>
-		</div>
+    <>
+    {!isFormHidden && 
+      <div className="write-review">
+        <p className="write-review__username">{getUsernameFromLocalStorage()}</p>
+        <form className="review-form">
+          <select className="review-form__select" value={selectValue} onChange={handleSelectChange}>
+            <option value="review-type" disabled hidden>Тип рецензии</option>
+            <option value="positive">Положительная</option>
+            <option value="neutral">Нейтральная</option>
+            <option value="negative">Отрицательная</option>
+          </select>
+          <input className="review-form__input" value={inputValue} onChange={handleInputChange}></input>
+          <textarea className="review-form__textarea" value={textAreaValue} onChange={handleTextAreaChange}></textarea>
+          <button className='review-form__btn' onClick={(e: any) => handleSubmitButton(e)}>Опубликовать рецензию</button>
+        </form>
+      </div>
+    }
+    {isFormHidden &&
+      <p>{`Рецензия опубликована, перезагрузите страницу :)`}</p>
+    }
+    </>
 	)
 }
 
