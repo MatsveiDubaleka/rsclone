@@ -46,8 +46,6 @@ export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
   }
   
   return(
-    <>
-    {(reviewsData?.total === 0 && isLogIn) ? 
         <div className="users-reviews">
           <h3 className="users-reviews__title">Рецензии зрителей</h3>
           {reviewsData?.total !== 0 &&
@@ -88,9 +86,5 @@ export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
               </div>
             </div>
         </div>
-      :
-      <p>К этому фильму еще не оставлено ни одной рецензии</p>
-    }
-    </>
   )
 }
