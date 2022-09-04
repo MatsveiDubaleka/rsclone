@@ -22,7 +22,7 @@ const MovieVideo = () => {
 	}).toUpperCase();
 
 	useEffect((): void => {
-		axios.get<TrailersArray[]>(`https://rskinopoisk.herokuapp.com/auth/getTrailer`, {
+		axios.get<TrailersArray[]>(`https://rskinopoisk.herokuapp.com/trailer/getTrailer`, {
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -30,7 +30,9 @@ const MovieVideo = () => {
 				const filteredData: TrailersArray[] = data.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
 				const lastElement: number = filteredData.length-1;
 				setTrailerName(filteredData[lastElement].nameEn)})
-		
+
+				console.log("trailerName from back = " + trailerName);
+				
 		if(trailerName === undefined) {
 			axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${currentYear}&month=${currentMonth}`, {
 				headers: {
