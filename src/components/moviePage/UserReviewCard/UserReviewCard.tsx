@@ -5,10 +5,11 @@ import "./UserReviewCard.scss";
 export type Review = {
 	author: string,
 	date: string,
-	description: string,
+	description?: string,
+  text?: string,
 	kinopoiskId: number,
-	negativeRating: number,
-	positiveRating: number,
+	negativeRating?: number,
+	positiveRating?: number,
 	title: string,
 	type: string
 }
@@ -33,7 +34,7 @@ export const UserReviewCard : FC<UserReviewCardProps> = ({ review }) => {
 			</div>
 			<div className="user-review__main">
 				<h4 className="user-review__title">{review.title}</h4>
-				<p className={`user-review__text ${isShownFull ? 'full-shown' : ''}`} dangerouslySetInnerHTML={{__html: `${review.description}`}}></p>
+				<p className={`user-review__text ${isShownFull ? 'full-shown' : ''}`} dangerouslySetInnerHTML={{__html: `${review.description ? review.description : review.text}`}}></p>
 			</div>
 			<button className="user-review__show-btn" onClick={handleBtnClick}>{isShownFull ? 'скрыть' : 'показать всю рецензию'}</button>
 		</div>
