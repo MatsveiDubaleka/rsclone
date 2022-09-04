@@ -1,27 +1,63 @@
 import React, { useState } from 'react';
-import { getUsernameFromLocalStorage } from '../../../utils/utilsFunctions';
+import { useLocation } from 'react-router';
+import { getUsernameFromLocalStorage, postReview } from '../../../utils/utilsFunctions';
 import './WriteReviewForm.scss';
 
 export const WriteReviewForm = () => {
 
-const [inputValue, setInputValue] = useState("Заголовок");
-const [textAreaValue, setTextAreaValue] = useState("Текст рецензии");
-const [selectValue, setSelectValue] = useState("review-type");
+  const [inputValue, setInputValue] = useState("Заголовок");
+  const [textAreaValue, setTextAreaValue] = useState("Текст рецензии");
+  const [selectValue, setSelectValue] = useState("review-type");
 
-const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-	const target = e.target;
-	setInputValue((target as HTMLInputElement).value);
-}
+  const getMovieIdFromPath = () => {
+    const path = useLocation().pathname;
+    const slashIndex = path.lastIndexOf('/');
+    return path.slice(-(slashIndex + 1));
+  } 
+  const movieIdFromPath = getMovieIdFromPath();
 
-const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-	const target = e.target;
-	setTextAreaValue((target as HTMLTextAreaElement).value);
-}
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
+    setInputValue((target as HTMLInputElement).value);
+  }
 
-const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-	const target = e.target;
-	setSelectValue((target as HTMLSelectElement).value);
-}
+  const handleTextAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const target = e.target;
+    setTextAreaValue((target as HTMLTextAreaElement).value);
+  }
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const target = e.target;
+    setSelectValue((target as HTMLSelectElement).value);
+  }
+
+  const getReviewBody = () => {
+    return {
+      title: inputValue,
+      text: textAreaValue,
+      type: selectValue,
+      author: getUsernameFromLocalStorage(),
+      kinopoiskId: Number(movieIdFromPath)
+    }
+  }
+
+  const handleSubmitButton = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('button clicked');
+    const body = getReviewBody();
+    console.log('body: ---', body)
+    await getRev();
+    // // console.log('button clicked');
+    await postReview(body);
+    console.log('button clicked');
+    await getRev();
+  }
+  
+  async function getRev() {
+    const resp = await fetch(`https://rskinopoisk.herokuapp.com/reviews/getReviews`);
+    const reviews = await resp.json();
+    console.log(reviews)
+  }
 
 	return(
 		<div className="write-review">
@@ -35,7 +71,7 @@ const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 				</select>
 				<input className="review-form__input" value={inputValue} onChange={handleInputChange}></input>
 				<textarea className="review-form__textarea" value={textAreaValue} onChange={handleTextAreaChange}></textarea>
-				<button className='review-form__btn'>Опубликовать рецензию</button>
+				<button className='review-form__btn' onClick={(e: any) => handleSubmitButton(e)}>Опубликовать рецензию</button>
 			</form>
 		</div>
 	)
