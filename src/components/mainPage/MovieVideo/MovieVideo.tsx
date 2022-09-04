@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
 import { useEffect, useState } from 'react';
-// import { token } from '../../../utils/token';
+import { token } from '../../../utils/token';
 import ReactPlayer from 'react-player';
 import "./MovieVideo.scss";
 import { NavLink } from 'react-router-dom';
@@ -8,20 +8,18 @@ import { NavLink } from 'react-router-dom';
 const movieTrailer = require('movie-trailer');
 
 type TrailersArray = {
-	kinopoiskId: number;
 	nameEn: string;
-	nameRu: string;
-	year: number;
 }
 
 const MovieVideo = () => {
 	const [trailer, setTrailer] = useState<any>([]);
 	const [videoURL, setVideoURL] = useState<string>("");
+	const [trailerName, setTrailerName] = useState<string>();
 	
-	// const currentYear: string = new Date().getFullYear().toString();
-	// const currentMonth: string = new Date().toLocaleString('en', {       
-	// 	month: 'long'       
-	// }).toUpperCase();
+	const currentYear: string = new Date().getFullYear().toString();
+	const currentMonth: string = new Date().toLocaleString('en', {       
+		month: 'long'       
+	}).toUpperCase();
 
 	useEffect((): void => {
 		axios.get<TrailersArray[]>(`https://rskinopoisk.herokuapp.com/auth/getTrailer`, {
@@ -31,16 +29,24 @@ const MovieVideo = () => {
 		}).then(({ data }: AxiosResponse<TrailersArray[]>): void => {
 				const filteredData: TrailersArray[] = data.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
 				const lastElement: number = filteredData.length-1;
-				setTrailer(filteredData[lastElement])})
-
-		// axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${currentYear}&month=${currentMonth}`, {
-		// 	headers: {
-		// 		'X-API-KEY': token
-		// 	}
-		// }).then(({ data }) => {
-		// 	const filteredData = data.items.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
-		// 	const len: number = Math.floor(Math.random() * filteredData.length);
-		// 	setTrailer(filteredData[len])})
+				setTrailerName(filteredData[lastElement].nameEn)})
+		
+		if(trailerName === undefined) {
+			axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${currentYear}&month=${currentMonth}`, {
+				headers: {
+					'X-API-KEY': token
+				}
+			}).then(({ data }) => {
+				const filteredData = data.items.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
+				const len: number = Math.floor(Math.random() * filteredData.length);
+				setTrailer(filteredData[len])})
+		} else {
+			axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${trailerName}&page=1`, {
+				headers: {
+					'X-API-KEY': token
+				}
+			}).then(({ data }) => !data.errors ? setTrailer(data.films[0]) : setTrailer([]));
+		}
 	}, []);
 
 	const nameEn: string = trailer?.nameEn; // get english film title
