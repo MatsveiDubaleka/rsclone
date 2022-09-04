@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import { MainPageLayout } from './components/mainPage/MainPageLayout/MainPageLayout';
 import { MoviePageLayout } from './components/moviePage/MoviePageLayout/MoviePageLayout';
 import { SearchPageLayout } from './components/searchPage/SearchPageLayout/SearchPageLayout';
-import { UserAccountPageLayout } from './components/userAccountPage/UserAccountPageLayout/UserAccountPageLayout';
+import { UserAccountPageLayout } from './components/userAccountPage/userAccountPageLayout/UserAccountPageLayout';
 
 const App = () => {
 
