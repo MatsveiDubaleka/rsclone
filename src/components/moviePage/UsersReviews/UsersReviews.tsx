@@ -87,19 +87,19 @@ export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
               </div>
               <div className="users-reviews__info">
                   <div className="users-reviews__total active">
-                    <p className="users-reviews__amount">{reviewsData?.total}</p>
+                    <p className="users-reviews__amount">{`${reviewsData?.total + userReviews?.length}`}</p>
                     <span>Всего</span>
                   </div>
                   <div className="users-reviews__positive">
-                    <p className="users-reviews__amount positive">{reviewsData?.totalPositiveReviews}</p>
+                    <p className="users-reviews__amount positive">{`${reviewsData?.totalPositiveReviews + userReviews?.filter((item: any) => item.type === 'positive').length}`}</p>
                     <span>Положительные</span>
                   </div>
                   <div className="users-reviews__neutral">
-                    <p className="users-reviews__amount neutral">{reviewsData?.totalNeutralReviews}</p>
+                    <p className="users-reviews__amount neutral">{`${reviewsData?.totalNeutralReviews + userReviews?.filter((item: any) => item.type === 'neutral').length}`}</p>
                     <span>Нейтральные</span>
                   </div>
                   <div className="users-reviews__negative">
-                    <p className="users-reviews__amount negative">{reviewsData?.totalNegativeReviews}</p>
+                    <p className="users-reviews__amount negative">{`${reviewsData?.totalNegativeReviews + userReviews?.filter((item: any) => item.type === 'negative').length}`}</p>
                     <span>Отрицательные</span>
                   </div>
               </div>
