@@ -35,7 +35,6 @@ export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
   const getUserReviews = async () => {
     const reviews = await getUserReviewsByMovie(movieId);
     const newArr = reviews.filter(item => item.kinopoiskId === movieId).reverse();
-    console.log(newArr);
     setUserReviews(newArr);
   }
 
