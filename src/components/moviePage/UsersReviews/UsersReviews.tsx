@@ -1,7 +1,7 @@
 import { createRef, FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { getData } from "../../../utils/config";
-import { getUsernameFromLocalStorage, getUserReviewsByUser } from "../../../utils/utilsFunctions";
+import { getUsernameFromLocalStorage, getUserReviewsByMovie, getUserReviewsByUser } from "../../../utils/utilsFunctions";
 import { MovieIdProps } from "../MoviePageLayout/MoviePageLayout";
 import { Review, UserReviewCard } from "../UserReviewCard/UserReviewCard";
 import { WriteReviewForm } from "../WriteReviewForm/WriteReviewForm";
@@ -33,9 +33,9 @@ export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
   }, [setUserReviews]);
 
   const getUserReviews = async () => {
-    const username = getUsernameFromLocalStorage();
-    const reviews = await getUserReviewsByUser(username);
-    const newArr = reviews.filter(item => item.kinopoiskId === movieId);
+    const reviews = await getUserReviewsByMovie(movieId);
+    const newArr = reviews.filter(item => item.kinopoiskId === movieId).reverse();
+    console.log(newArr);
     setUserReviews(newArr);
   }
 

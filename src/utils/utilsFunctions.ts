@@ -16,6 +16,13 @@ export async function getUserReviewsByUser(username: string) {
 	return userReviews;
 }
 
+export async function getUserReviewsByMovie(kinopoiskId: number) {
+	const resp = await fetch(`https://rskinopoisk.herokuapp.com/reviews/getReviews`);
+	const reviews: any[] = await resp.json();
+	const userReviews : any[] = reviews.filter((review) => review.kinopoiskId === kinopoiskId);
+	return userReviews;
+}
+
 
 type Body = {
   title: string,
