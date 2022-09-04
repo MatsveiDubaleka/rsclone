@@ -39,13 +39,14 @@ $color-negative: #FF0000;
 		font-weight: bold;
 		max-width: 40px;
 		text-align: center;
-		flex: 1 0 0;
+		flex: 0 0 auto;
 		font-size: 16px;
 	}
 
 	&__poster {
 		margin-left: 15px;
 		width: 100px;
+    flex: 0 0 auto;
 	}
 
 	&__poster-image {
@@ -90,6 +91,7 @@ $color-negative: #FF0000;
 		margin-right: auto;
 		text-align: left;
 		align-self: flex-start;
+    flex: 0 1 auto;
 
 		& div {
 			margin-bottom: 3px;

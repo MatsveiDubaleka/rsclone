@@ -9,8 +9,8 @@ const MovieCardFlat : FC<IDropdownMovie> = ({num, nameRu, nameEn, posterUrlPrevi
 	const[elem, setElem] = useState(false);
   
 	const infoMainArray = [nameEn, nameRu, year].filter(item => item !== undefined && item !== null).join(', '); // эти переменные, чтобы не было висячих запятых в верстке
-	const countriesArray = countries.map(item => item.country).join(', ');
-	const genresArray = genres.map(item => item.genre).join(', ');
+	const countriesArray = countries.slice(0,5).map(item => item.country).join(', ');
+	const genresArray = genres.slice(0,5).map(item => item.genre).join(', ');
 
 	return (
 		<li className="movie-card-flat" id={`${filmId ? filmId : kinopoiskId}`}>
