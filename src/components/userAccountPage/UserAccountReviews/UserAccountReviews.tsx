@@ -11,7 +11,7 @@ export const UserAccountReviews = () => {
 
   const getReviews = async() => {
     const resp = await getUserReviewsByUser(username);
-    setMyReviews(resp);
+    setMyReviews(resp.reverse());
   }
 
 useEffect(() => {
