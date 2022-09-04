@@ -50,10 +50,8 @@ const Authorization = () => {
 
   const handleRegistrationBtn = async() => {
     const resp = await tryRegistration(login, password);
-    console.log('RESPONCE', resp);
     if ((resp as AuthResponce).message?.includes('successfully')) {
       setUsernameToLocalStorage(login);
-      console.log((resp as AuthResponce).message);
       alert(`аккаунт ${login} успешно создан!`);
       navigate("/my-account");
     } else {
