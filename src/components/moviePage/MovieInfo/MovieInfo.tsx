@@ -5,7 +5,7 @@ import { MovieIdProps } from '../MoviePageLayout/MoviePageLayout';
 import { MovieRating } from '../MovieRating/MovieRating';
 import { MovieRatingSet } from '../MovieRatingSet/MovieRatingSet';
 import "./MovieInfo.scss";
-import { filterPersons, findBudget, findDWorldPremiere, formatAge, formatData } from './utils';
+import { addMovieToLocalStorage, filterPersons, findBudget, findDWorldPremiere, formatAge, formatData } from './utils';
 
 export type Movie = {
 	nameRu?: string,
@@ -22,7 +22,9 @@ export type Movie = {
 	reviewsCount?: number,
 	ratingAgeLimits?: string,
 	ratingImdb?: number,
-	ratingImdbVoteCount?: number
+	ratingImdbVoteCount?: number,
+  kinopoiskId?: number,
+  posterUrlPreview?: string
 }
 
 export type Person = {
@@ -99,10 +101,18 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
 		getData(`v2.2/films/${movieId}/distributions`, setDistributions);
 	}, [setDistributions]);
 
+  useEffect(() => {
+    setTimeout(setToLocalStorage, 1500);
+  }, [])
+
 	let ratingClass = '';
 	if (movie?.ratingKinopoisk) {
 		ratingClass = movie?.ratingKinopoisk < 5 ? 'negative' : movie?.ratingKinopoisk < 7 ? 'neutral' : 'positive';
 	}
+
+  const setToLocalStorage = async() => {
+    await getData(`v2.2/films/${movieId}/`, addMovieToLocalStorage);
+  }
 
 	return(
 		<>
