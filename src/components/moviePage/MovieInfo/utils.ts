@@ -49,13 +49,6 @@ export const formatData = (date: string | undefined) => {
 	}
 }
 
-type LocalStorageMovie = {
-  kinopoiskId: number,
-  posterUrlPreview: string
-}
-
-type LocalStorageList = LocalStorageMovie[];
-
 export const addMovieToLocalStorage = (movie: Movie) => {
 
   const movieForLS = {
@@ -67,18 +60,12 @@ export const addMovieToLocalStorage = (movie: Movie) => {
     const visitedMovies = localStorage.getItem('visitedMovies');
     if (visitedMovies) {
       const arr = JSON.parse(visitedMovies);
-      console.log('parsed array', arr);
       if (arr[arr.length - 1].kinopoiskId !== movie.kinopoiskId ) {
-        console.log('не повторяется фильм!')
         arr.push(movieForLS);
-      } else {
-        console.log('повторяестя фильм!')
       }
-      console.log('pushed array:', arr)
       localStorage.setItem('visitedMovies',  JSON.stringify(arr));
     }
   } else {
     localStorage.setItem('visitedMovies', JSON.stringify([movieForLS]));
-    console.log('set to local storage');
   }
 }
