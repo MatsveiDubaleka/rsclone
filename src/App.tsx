@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import { MainPageLayout } from './components/mainPage/MainPageLayout/MainPageLayout';
 import { MoviePageLayout } from './components/moviePage/MoviePageLayout/MoviePageLayout';
+import { MoviesListsPageLayout } from './components/MoviesListsPage/MoviesListsPageLayout';
 import { SearchPageLayout } from './components/searchPage/SearchPageLayout/SearchPageLayout';
 import { UserAccountPageLayout } from './components/userAccountPage/UserAccountPageLayout/UserAccountPageLayout';
 
@@ -25,6 +26,8 @@ const App = () => {
         <Route path='movie/:id' element={<MoviePageLayout />}/>
         <Route path='/s' element={<AdvancedSearchPageLayout />}/>
 				<Route path='/my-account/*' element={<UserAccountPageLayout/>}/>
+				<Route path='/recommend' element={<MoviesListsPageLayout/>}/>
+				<Route path='/new' element={<MoviesListsPageLayout/>}/>
       </Routes>
 			{location === '/autorization' ? <></> : <Footer /> }
     </div>
