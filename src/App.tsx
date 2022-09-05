@@ -8,7 +8,7 @@ import { MainPageLayout } from './components/mainPage/MainPageLayout/MainPageLay
 import { MoviePageLayout } from './components/moviePage/MoviePageLayout/MoviePageLayout';
 import { MoviesListsPageLayout } from './components/MoviesListsPage/MoviesListsPageLayout';
 import { SearchPageLayout } from './components/searchPage/SearchPageLayout/SearchPageLayout';
-import { UserAccountPageLayout } from './components/userAccountPage/UserAccountPageLayout/UserAccountPageLayout';
+import { UserAccountPageLayout } from './components/userAccountPage/userAccountPageLayout/UserAccountPageLayout';
 
 const App = () => {
 
