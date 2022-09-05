@@ -25,7 +25,19 @@ class FavouriteController {
     }
   }
   
-  async getFavouriteUser (req, res) {
+  async getFavouriteUserByName (req, res) {
+    try {
+      const {username} = req.params;
+      const favourite = await Favourite.find({ username })
+      res
+      .status(200)
+      .json(favourite)
+    } catch (e) {
+      console.log('You have error', e.message)
+    }
+  }
+  
+  async getFavouriteUserByID (req, res) {
     try {
       const {id} = req.params;
       const favourite = await Favourite.findOne({ id })
