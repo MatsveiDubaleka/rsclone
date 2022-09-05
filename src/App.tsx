@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import './App.scss';
+import './App.css';
 import { AdvancedSearchPageLayout } from './components/AdvancedSearchPage/AdvancedSearchPageLayout/AdvancedSearchPageLayout';
 import Authorization from './components/Authorization/Authorization';
 import Footer from './components/Footer/Footer';
