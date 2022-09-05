@@ -52,8 +52,8 @@ class FavouriteController {
   async removeFavourite (req, res) {
     try {
       const {id} = req.params;
-      const favourite = await Favourite.findOneAndDelete({id})
-      return res.json(`Film was successfully deleted ${favourite}`)
+      const favourite = await Favourite.findByIdAndDelete(id)
+      return res.json(`Film was successfully deleted`)
     } catch (e) {
       console.log('You have error', e.message)
     }
