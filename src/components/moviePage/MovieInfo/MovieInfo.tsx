@@ -75,6 +75,9 @@ type Country = {
 export type Cast = Person [];
 
 export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
+
+  window.scrollTo(0, 0);
+
   const[elem, setElem] = useState<JSX.Element>();
 
   const [movie, setMovie] = useState<Movie>({});
@@ -122,7 +125,11 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
         <div className="movie-info__trailer" style={{ backgroundImage: `url(${movie?.coverUrl})`}}></div>
       </div>
       <div className="movie-info__column-2">
-        <h2 className="movie-info__title">{ movie?.nameRu } {`(${movie?.year})`}</h2>
+        {
+          movie?.nameRu ? 
+          <h2 className="movie-info__title">{ movie?.nameRu } {`(${movie?.year})`}</h2> :
+          <img src='https://samirkerzabi.com/wp-content/uploads/2021/02/1_9EBHIOzhE1XfMYoKz1JcsQ.gif' alt=''></img>
+        }
         <div className="movie-info__buttons">
           <button className="movie-info__to-watch-btn"></button>
           <button onClick={(): void => elem ? setElem(undefined) : setElem(<MovieRatingSet />)} 
