@@ -42,9 +42,10 @@ const Authorization = () => {
       if (resp[1].find((item : any) => item === 'ADMIN')) {
         setUsernameToLocalStorage(login);
         navigate("/admin-account");
+      } else {
+        setUsernameToLocalStorage(login);
+        navigate("/my-account");
       }
-      setUsernameToLocalStorage(login);
-      navigate("/my-account");
     }
   }
 

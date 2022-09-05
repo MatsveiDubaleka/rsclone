@@ -3,7 +3,7 @@ import axios from "axios";
 import { token } from "../../utils/token";
 import './Header.scss';
 import DropdownList from '../DropdownList/DropdownList';
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getUsernameFromLocalStorage } from "../../utils/utilsFunctions";
 
 let searchResults: never[];
