@@ -40,7 +40,7 @@ export const SearchPageLayout = () => {
 		} else {	
 			getDataItems(`v2.2/films?countries=${Number(countries)>0 ? countries : ""}&genres=${Number(genres)>0 ? genres : ""}&order=RATING&type=ALL&ratingFrom=${ratingFrom ? ratingFrom : "0"}&ratingTo=${ratingTo ? ratingTo : "10"}&yearFrom=${yearFrom ? yearFrom : "1895"}&yearTo=${yearTo ? yearTo : "2022"}&keyword=${keyword ? keyword : ""}&page=${page}`, setResults);
 		}
-	},[setResults, page]);
+	},[setResults, page, myParam]);
 
 	const nextPage = () => {
 		setPage(page+1)
