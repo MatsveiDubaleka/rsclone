@@ -25,7 +25,7 @@ class RatingController {
   
   async getUserRating (req, res) {
     try {
-      const {username} = req.body;
+      const {username} = req.params;
       const ratings = await Rating.find({ username })
       return res.json(ratings)
     } catch (e) {

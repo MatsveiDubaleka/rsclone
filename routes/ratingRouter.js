@@ -4,7 +4,7 @@ const ratingController = require('../controllers/ratingController')
 
 router.post('/postRating', ratingController.postRating)
 router.get('/getRating', ratingController.getRating)
-router.post('/getRating/:id', ratingController.getUserRating)
+router.get('/getRating/:username', ratingController.getUserRating)
 router.put('/updateRating/:id', ratingController.updateRating)
 
 module.exports = router;
