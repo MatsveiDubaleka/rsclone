@@ -18,6 +18,7 @@ const DropdownMovieItem = ({nameRu, nameEn, posterUrlPreview, year, rating, film
 				)}
 				<p className="dropdown-movie-item__title-en-and-year">{infoArr}</p>
 			</div>
+			{}
 		</div>
 	)
 }

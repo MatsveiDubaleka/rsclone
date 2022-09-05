@@ -1,8 +1,10 @@
-export const AdminAccountTrailersList = () => {
+import './AdminAccountTrailersList.scss';
 
-  return(
+export const AdminAccountTrailersList = () => {
+  
+  return (
     <div className="trailers-list">
-      <p>Выбрать трейлер на главную</p>
+      <p>Выбрать трейлер на главную страницу</p>
     </div>
   )
 }

@@ -39,7 +39,6 @@ const Authorization = () => {
         alert('такого пользователя не существует');
       }
     } else {
-      
       if (resp[1].find((item : any) => item === 'ADMIN')) {
         setUsernameToLocalStorage(login);
         navigate("/admin-account");
