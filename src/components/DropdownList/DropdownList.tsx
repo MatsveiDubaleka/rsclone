@@ -1,10 +1,12 @@
+import { NavLink, useNavigate } from 'react-router-dom';
 import { getClassForRaiting } from "../../utils/utilsFunctions";
+import { searchWord } from '../Header/Header';
 import "./DropdownList.scss";
 import { IDropdownMovieList, IDropdownMovie } from "./types";
 
 const DropdownMovieItem = ({nameRu, nameEn, posterUrlPreview, year, rating, filmId} : IDropdownMovie) => {
 
-const infoArr = [nameEn, year].filter(item => item !== undefined).join(', ');
+	const infoArr = [nameEn, year].filter(item => item !== undefined).join(', ');
 
 	return(
 		<div className="dropdown-movie-item" data-id={filmId}>
@@ -21,20 +23,26 @@ const infoArr = [nameEn, year].filter(item => item !== undefined).join(', ');
 }
 
 const DropdownList = ({movies} : IDropdownMovieList) => {
-
+	const navigate = useNavigate();
+	
 	movies.splice(5);
 
 	return (
 		<ul className="dropdown-list">
 			<li className="dropdown-list__movies">
 				{movies.map((movie: IDropdownMovie) : JSX.Element => {
-					return <DropdownMovieItem  nameRu={movie.nameRu} nameEn={movie.nameEn} year={movie.year} rating={movie.rating} posterUrlPreview={movie.posterUrlPreview} key={`dropdown-movie-item-${movie.filmId}`}></DropdownMovieItem>
+					return (
+						<>
+							<NavLink to={`/movie/${movie.filmId}`}>
+								<DropdownMovieItem nameRu={movie.nameRu} nameEn={movie.nameEn} year={movie.year} rating={movie.rating} posterUrlPreview={movie.posterUrlPreview} key={`dropdown-movie-item-${movie.filmId}`}></DropdownMovieItem>
+							</NavLink>
+						</>
+					)
 				})}
 			</li>
-			<button className="dropdown-list__show-btn">Показать всё</button>
+			<button onClick={()=>navigate(`/searchPage?search=${searchWord}`)} className="dropdown-list__show-btn">Показать всё</button>
 		</ul>
 	)
 }
 
 export default DropdownList;
-

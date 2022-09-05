@@ -3,7 +3,7 @@ import axios from "axios";
 import { token } from "../../utils/token";
 import './Header.scss';
 import DropdownList from '../DropdownList/DropdownList';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getUsernameFromLocalStorage } from "../../utils/utilsFunctions";
 
 let searchResults: never[];
@@ -67,10 +67,9 @@ const Header = () => {
             </Link>
             
             {results.length > 0 && (
-            <ul className="results">
-              <DropdownList movies={results}  />
+            <ul onClick={()=>setResults([])} className="results">
+                <DropdownList movies={results} />
             </ul>
-
           )}
           </div>
           <div className="user-auth">
