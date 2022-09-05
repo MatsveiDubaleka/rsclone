@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
+import { AdminAccountPageLayout } from './components/adminAccountPage/adminAccountPageLayout/AdminAccountPageLayout';
 import { AdvancedSearchPageLayout } from './components/AdvancedSearchPage/AdvancedSearchPageLayout/AdvancedSearchPageLayout';
 import Authorization from './components/Authorization/Authorization';
 import Footer from './components/Footer/Footer';
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='movie/:id' element={<MoviePageLayout />}/>
         <Route path='/s' element={<AdvancedSearchPageLayout />}/>
 				<Route path='/my-account/*' element={<UserAccountPageLayout/>}/>
+        <Route path='/admin-account/*' element={<AdminAccountPageLayout/>}/>
 				<Route path='/recommend' element={<MoviesListsPageLayout/>}/>
 				<Route path='/new' element={<MoviesListsPageLayout/>}/>
       </Routes>
