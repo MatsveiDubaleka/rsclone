@@ -7,6 +7,7 @@ import Header from './components/Header/Header';
 import { MainPageLayout } from './components/mainPage/MainPageLayout/MainPageLayout';
 import { MoviePageLayout } from './components/moviePage/MoviePageLayout/MoviePageLayout';
 import { MoviesListsPageLayout } from './components/MoviesListsPage/MoviesListsPageLayout';
+import { Placeholder } from './components/Placeholder/Placeholder';
 import { SearchPageLayout } from './components/searchPage/SearchPageLayout/SearchPageLayout';
 import { UserAccountPageLayout } from './components/userAccountPage/userAccountPageLayout/UserAccountPageLayout';
 
@@ -22,6 +23,8 @@ const App = () => {
 			{location === '/autorization' ? <></> : <Header />}
       <Routes>
         <Route path='/' element={<MainPageLayout/>}/>
+        <Route path='/movies' element={<Placeholder/>}/>
+        <Route path='/tv-series' element={<Placeholder/>}/>
         <Route path='/searchPage' element={<SearchPageLayout />}/>
         <Route path='movie/:id' element={<MoviePageLayout />}/>
         <Route path='/s' element={<AdvancedSearchPageLayout />}/>

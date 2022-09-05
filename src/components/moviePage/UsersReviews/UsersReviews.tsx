@@ -57,52 +57,50 @@ export const UsersReviews : FC<MovieIdProps> = ({ movieId }) => {
   }
 
   return(
-        <div className="users-reviews">
-          <h3 className="users-reviews__title">Рецензии зрителей</h3>
-          {reviewsData?.total !== 0 &&
-            <button className="users-reviews__write-review-btn" onClick={handleWriteReviewBtn}>Написать рецензию</button>
-          }
-            <div className="users-reviews__content">
-              <div className="users-reviews__reviews">
-                {userReviews ? 
-                  userReviews.map((item : Review, index : number) => {
-                    return <UserReviewCard key={`review-${index}`} review={item} />
-                  })
-                :
-                <></>
-                }
-                {reviewsData?.items?.splice(0, 3).map((item : Review, index:number) => {
+    <>
+      <div className="users-reviews">
+        <h3 className="users-reviews__title">Рецензии зрителей</h3>
+        {reviewsData?.total !== 0 &&
+          <button className="users-reviews__write-review-btn" onClick={handleWriteReviewBtn}>Написать рецензию</button>
+        }
+        <div className="users-reviews__content">
+          <div className="users-reviews__reviews">
+            {userReviews ? 
+                userReviews.map((item : Review, index : number) => {
                   return <UserReviewCard key={`review-${index}`} review={item} />
-                })}
-                {isLogIn ?
-                  <>
-                    <div ref={reviewFormRef as React.RefObject<HTMLDivElement>}>
-                      <WriteReviewForm></WriteReviewForm>
+                }) :
+              <></>}
+              {reviewsData?.items?.splice(0, 3).map((item : Review, index:number) => {
+                return <UserReviewCard key={`review-${index}`} review={item} />
+              })}
+              {isLogIn ?
+                <>
+                  <div ref={reviewFormRef as React.RefObject<HTMLDivElement>}>
+                    <WriteReviewForm></WriteReviewForm>
+                  </div>
+                </> :
+                <></>}
+          </div>
+          <div className="users-reviews__info">
+                    <div className="users-reviews__total active">
+                      <p className="users-reviews__amount">{`${(reviewsData?.total + userReviews?.length) ? (reviewsData?.total + userReviews?.length) : '-'}`}</p>
+                      <span>Всего</span>
                     </div>
-                  </>
-                  :
-                  <></>
-                }
-              </div>
-              <div className="users-reviews__info">
-                  <div className="users-reviews__total active">
-                    <p className="users-reviews__amount">{`${reviewsData?.total + userReviews?.length}`}</p>
-                    <span>Всего</span>
-                  </div>
-                  <div className="users-reviews__positive">
-                    <p className="users-reviews__amount positive">{`${reviewsData?.totalPositiveReviews + userReviews?.filter((item: any) => item.type === 'positive').length}`}</p>
-                    <span>Положительные</span>
-                  </div>
-                  <div className="users-reviews__neutral">
-                    <p className="users-reviews__amount neutral">{`${reviewsData?.totalNeutralReviews + userReviews?.filter((item: any) => item.type === 'neutral').length}`}</p>
-                    <span>Нейтральные</span>
-                  </div>
-                  <div className="users-reviews__negative">
-                    <p className="users-reviews__amount negative">{`${reviewsData?.totalNegativeReviews + userReviews?.filter((item: any) => item.type === 'negative').length}`}</p>
-                    <span>Отрицательные</span>
-                  </div>
-              </div>
-            </div>
+                    <div className="users-reviews__positive">
+                      <p className="users-reviews__amount positive">{`${ reviewsData?.totalPositiveReviews ? (reviewsData?.totalPositiveReviews + userReviews?.filter((item: any) => item.type === 'positive').length) : '-'}`}</p>
+                      <span>Положительные</span>
+                    </div>
+                    <div className="users-reviews__neutral">
+                      <p className="users-reviews__amount neutral">{`${ reviewsData?.totalNeutralReviews ? (reviewsData?.totalNeutralReviews + userReviews?.filter((item: any) => item.type === 'neutral').length) : '-'}`}</p>
+                      <span>Нейтральные</span>
+                    </div>
+                    <div className="users-reviews__negative">
+                      <p className="users-reviews__amount negative">{`${ reviewsData?.totalNegativeReviews ? (reviewsData?.totalNegativeReviews + userReviews?.filter((item: any) => item.type === 'negative').length) : '-'}`}</p>
+                      <span>Отрицательные</span>
+                    </div>
+          </div>
         </div>
+      </div>
+    </>
   )
 }
