@@ -153,15 +153,15 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
           <p className="movie-info__director">Режиссёр</p>
           <p>{ filterPersons(persons, "DIRECTOR")?.map((item : Person) => item.nameRu)}</p>
           <p>Сценарий</p>
-          <p>{filterPersons(persons, "WRITER")?.map((item : Person) => item.nameRu).join(', ')}</p>
+          <p>{filterPersons(persons, "WRITER")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
           <p>Продюсер</p>
-          <p>{filterPersons(persons, "PRODUCER")?.map((item : Person) => item.nameRu).join(', ')}</p>
+          <p>{filterPersons(persons, "PRODUCER")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
           <p>Оператор</p>
-          <p>{filterPersons(persons, "OPERATOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
+          <p>{filterPersons(persons, "OPERATOR")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
           <p>Композитор</p>
-          <p>{filterPersons(persons, "COMPOSER")?.map((item : Person) => item.nameRu).join(', ')}</p>
+          <p>{filterPersons(persons, "COMPOSER")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
           <p>Монтаж</p>
-          <p>{filterPersons(persons, "EDITOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
+          <p>{filterPersons(persons, "EDITOR")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
           {budget?.items.length !== 0 && 
             <>
               <p>Бюджет</p>
@@ -200,7 +200,7 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
         </div>
       </div>
       <div className="movie-info__column-3">
-        <p className={`movie-info__rating ${ratingClass}`}>{movie?.ratingKinopoisk}</p>
+        <p className={`movie-info__rating ${ratingClass}`}>{movie?.ratingKinopoisk || '-'}</p>
         <p className="movie-info__ratings-total">{movie?.ratingKinopoiskVoteCount} оценки</p>
         <p className="movie-info__reviews-total">{movie?.reviewsCount} рецензии</p>
         <div className="movie-info__cast">
