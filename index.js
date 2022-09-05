@@ -3,6 +3,8 @@ const express = require("express")
 const authRouter = require('./routes/authRouter')
 const reviewsRouter = require('./routes/reviewsRouter')
 const trailerRouter = require('./routes/trailerRouter')
+const ratingRouter = require('./routes/ratingRouter')
+const favouriteRouter = require('./routes/favouriteRouter')
 
 const PORT = process.env.PORT || 5000
 const cors = require('cors');
@@ -16,6 +18,8 @@ app.use(express.json())
 app.use('/auth', authRouter)
 app.use('/reviews', reviewsRouter)
 app.use('/trailer', trailerRouter)
+app.use('/rating', ratingRouter)
+app.use('/favourite', favouriteRouter)
 
 const start = async () => {
   try{
