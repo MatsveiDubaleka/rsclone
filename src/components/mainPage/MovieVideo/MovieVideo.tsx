@@ -35,7 +35,11 @@ const MovieVideo = () => {
 						headers: {
 							'X-API-KEY': token
 					}
-					}).then(({ data }) => setTrailer(data.films[0]));
+					}).then(({ data }) => setTrailer(data.films[0]))
+					.catch((error): void => {
+						console.log(error.name);
+						localStorage.setItem("error", error.name)
+					});
 				} else {
 					axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${currentYear}&month=${currentMonth}`, {
 						headers: {
@@ -45,12 +49,16 @@ const MovieVideo = () => {
 						const filteredData = data.items.filter((x: { nameEn: string }): boolean => x.nameEn.length > 0);
 						const len: number = Math.floor(Math.random() * filteredData.length);
 						setTrailer(filteredData[len])})
+						.catch((error): void => {
+							console.log(error.name);
+							localStorage.setItem("error", error.name)
+						});
 				}
 		})
 	}, [setTrailer]);
 
 	const nameEn: string | undefined = trailer.nameEn; // get english film title
-console.log(trailer)
+
 	movieTrailer(nameEn)
 		.then((response: string): void => {(response === null ? setVideoURL("https://youtu.be/5bqpcIX2VDQ") : setVideoURL(response))})
 		.catch((error: string): void => {
