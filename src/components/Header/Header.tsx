@@ -73,7 +73,7 @@ const Header = () => {
           )}
           </div>
           <div className="user-auth">
-          <Link to={`/my-account`} className={`avatar-link ${isLogIn ? '' : 'hidden'}`}><button className="avatar-btn"></button></Link>
+          <Link to={getUsernameFromLocalStorage() !== "admin" ? `/my-account` : `/admin-account`} className={`avatar-link ${isLogIn ? '' : 'hidden'}`}><button className="avatar-btn"></button></Link>
           <span className="flag" id="flag" hidden></span>
           <Link to={`/autorization`} className={`enter-link ${isLogIn ? 'hidden' : ''}`}><p>Вход</p></Link>
           </div>
