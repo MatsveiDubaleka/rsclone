@@ -1,29 +1,29 @@
-import React from "react";
-import { SideNavigation } from "../../SideNavigation/SideNavigation";
-import { INavItemDataArray } from "../../SideNavigation/types";
+import React from 'react';
+import { SideNavigation } from '../../SideNavigation/SideNavigation';
+import { INavItemDataArray } from '../../SideNavigation/types';
 
-const mainPageNavData : INavItemDataArray = [
+const mainPageNavData: INavItemDataArray = [
   {
-    title: "Главная",
-    path: '/',
+    title: 'Главная',
+    path: '/rsclone/',
     icon: 'home-menu-icon',
   },
   {
-    title: "Фильмы",
-    path: '/movies',
+    title: 'Фильмы',
+    path: '/rsclone/movies',
     icon: 'movie-menu-icon',
   },
   {
-    title: "Сериалы",
-    path: '/tv-series',
+    title: 'Сериалы',
+    path: '/rsclone/tv-series',
     icon: 'tvseries-menu-icon',
   },
-]
+];
 
 export const MainPageMenu = () => {
-	return(
-		<React.Fragment>
-			<SideNavigation navData={mainPageNavData}></SideNavigation>
-		</React.Fragment>
-	)
-}
+  return (
+    <React.Fragment>
+      <SideNavigation navData={mainPageNavData}></SideNavigation>
+    </React.Fragment>
+  );
+};
