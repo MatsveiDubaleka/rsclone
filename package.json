@@ -2,6 +2,7 @@
   "name": "rsclone",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/MatsveiDubaleka/rsclone/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -13,6 +14,7 @@
     "@types/react-star-rating-component": "^1.4.1",
     "axios": "^0.27.2",
     "babel-jest": "^27.5.1",
+    "gh-pages": "^4.0.0",
     "jest": "^27.5.1",
     "jest-css-modules": "^2.1.0",
     "prettier": "^2.7.1",
@@ -38,7 +40,9 @@
     "eject": "react-scripts eject",
     "jest": "jest",
     "husky-install": "husky install",
-    "lint": "eslint src --color"
+    "lint": "eslint src --color",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "jest": {
     "setupFilesAfterEnv": [
