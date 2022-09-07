@@ -13,30 +13,35 @@ import { SearchPageLayout } from './components/searchPage/SearchPageLayout/Searc
 import { UserAccountPageLayout } from './components/userAccountPage/userAccountPageLayout/UserAccountPageLayout';
 
 const App = () => {
-
-	const location = useLocation().pathname;
+  const location = useLocation().pathname;
 
   return (
-    <div className="App">
-			<Routes>
-				<Route path='/autorization' element={<Authorization/>}/>
-			</Routes>
-			{location === '/autorization' ? <></> : <Header />}
+    <div className='App'>
       <Routes>
-        <Route path='/' element={<MainPageLayout/>}/>
-        <Route path='/movies' element={<Placeholder/>}/>
-        <Route path='/tv-series' element={<Placeholder/>}/>
-        <Route path='/searchPage' element={<SearchPageLayout />}/>
-        <Route path='movie/:id' element={<MoviePageLayout />}/>
-        <Route path='/s' element={<AdvancedSearchPageLayout />}/>
-				<Route path='/my-account/*' element={<UserAccountPageLayout/>}/>
-        <Route path='/admin-account/*' element={<AdminAccountPageLayout/>}/>
-				<Route path='/recommend' element={<MoviesListsPageLayout/>}/>
-				<Route path='/new' element={<MoviesListsPageLayout/>}/>
+        <Route path='/rsclone/autorization' element={<Authorization />} />
       </Routes>
-			{location === '/autorization' ? <></> : <Footer /> }
+      {location === '/autorization' ? <></> : <Header />}
+      <Routes>
+        <Route path='/rsclone/' element={<MainPageLayout />} />
+        <Route path='/rsclone/movies' element={<Placeholder />} />
+        <Route path='/rsclone/tv-series' element={<Placeholder />} />
+        <Route path='/rsclone/searchPage' element={<SearchPageLayout />} />
+        <Route path='movie/:id' element={<MoviePageLayout />} />
+        <Route path='/rsclone/s' element={<AdvancedSearchPageLayout />} />
+        <Route
+          path='/rsclone/my-account/*'
+          element={<UserAccountPageLayout />}
+        />
+        <Route
+          path='/rsclone/admin-account/*'
+          element={<AdminAccountPageLayout />}
+        />
+        <Route path='/rsclone/recommend' element={<MoviesListsPageLayout />} />
+        <Route path='/rsclone/new' element={<MoviesListsPageLayout />} />
+      </Routes>
+      {location === '/autorization' ? <></> : <Footer />}
     </div>
   );
-}
+};
 
 export default App;
