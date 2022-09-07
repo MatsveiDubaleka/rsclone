@@ -39,7 +39,9 @@
     "eject": "react-scripts eject",
     "jest": "jest",
     "husky-install": "husky install",
-    "lint": "eslint src --color"
+    "lint": "eslint src --color",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "jest": {
     "setupFilesAfterEnv": [
