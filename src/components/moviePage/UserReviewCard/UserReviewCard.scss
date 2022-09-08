@@ -1,0 +1,99 @@
+$color-light-text: rgba(0, 0, 0, 0.4);
+$color-dark-text: #333;
+$color-brand: #f60;
+$color-positive-review: rgba(0, 153, 51, 0.15);
+$color-neutral-review: #f2f2f2;
+$color-negative-review: rgba(255, 102, 0, 0.13);
+$color-user-name: #060077;
+$color-lines: #e6e6e6;
+$color-background-hover: #f7f7f7;
+$color-positive: #3BB33B;
+$color-neutral: #777777;
+$color-negative: #FF0000;
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+button {
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.user-review {
+	max-width: 620px;
+	border-radius: 8px;
+	padding: 0 0 20px 0;
+	transition: 0.3s;
+
+	&.positive {
+		background-color: $color-positive-review;
+	}
+	&.negative {
+		background-color: $color-negative-review;
+	}
+	&.neutral {
+		background-color: $color-neutral-review;
+	}
+
+	&__header {
+		padding: 20px 20px;
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid $color-lines;
+	}
+
+	&__username {
+		font-size: 16px;
+		line-height: 18px;
+		font-weight: 700;
+		color: $color-user-name;
+	}
+
+	&__date {
+		font-size: 13px;
+		line-height: 18px;
+		color: $color-light-text;
+	}
+
+	&__title {
+		padding: 20px 20px 0px 20px;
+		font-size: 18px;
+		line-height: 24px;
+		font-weight: 700;
+		text-align: left;
+		color: #000;
+	}
+
+	&__text {
+		padding: 20px 20px;
+		color: $color-dark-text;
+		text-align: left;
+		height: 500px;
+		overflow: hidden;
+		transition: 0.3s;
+
+		&.full-shown {
+			height: 100%;
+		}
+	}
+
+	&__show-btn {
+		font-size: 12px;
+		line-height: 18px;
+		background-color: rgba(0, 0, 0, 0.2);
+		color: $color-light-text;
+		padding: 3px 5px;
+		border-radius: 4px;
+		display: block;
+		margin: 10px 0 0 20px;
+	}
+
+
+}

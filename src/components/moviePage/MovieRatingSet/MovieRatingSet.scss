@@ -1,0 +1,57 @@
+$color-light-text: rgba(0, 0, 0, 0.2);
+$color-dark-text: #333;
+$color-positive: #3BB33B;
+$color-neutral: #777777;
+$color-negative: #FF0000;
+
+.movie-rating-set {
+	margin-left: 15px;
+	font-family: 'Tahoma';
+	font-style: normal;
+	width: 350px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+
+	&__old-rating {
+		font-size: 24px;
+		font-weight: 700;
+		margin-right: 10px;
+
+		&.positive {
+			color: $color-positive;
+		}
+		&.neutral {
+			color: $color-neutral;
+		}
+		&.negative {
+			color: $color-negative;
+		}
+	}
+
+	&__stars-block {
+		display: flex;
+		width: 240px;
+		height: 40px;
+		border: 1px solid $color-light-text;
+		border-radius: 3px;
+		padding-left: 10px;
+		align-items: center;
+
+    &_stars {
+			margin-right: 15px;
+			margin-bottom: 3px;
+		}
+
+		&_splitter {
+			color: $color-light-text;
+		}
+
+		&_new-rating {
+			color: $color-dark-text;
+			display: flex;
+			justify-content: center;
+			width: 38px;
+		}
+	}
+}

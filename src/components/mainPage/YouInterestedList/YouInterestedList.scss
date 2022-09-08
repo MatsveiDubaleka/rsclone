@@ -1,0 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+
+.you-interested-list {
+	
+	width: 100%;
+	text-align: left;
+
+	&__title {
+		font-size: 24px;
+		line-height: 36px;
+		color: #000;
+		cursor: pointer;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}	
+
+	&__movies {
+		display: flex;
+		align-items:flex-start;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		gap: 20px;
+		margin-top: 25px;
+	}
+
+	&__movie {
+		width: 100px;
+		height: 150px;
+		border-radius: 4px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-image: url('https://64.media.tumblr.com/f9041ff8891cdb309b7e03b3314e0488/f756467709f1da32-91/s1280x1920/1f5286fd471ac514bdfa7e81c22564c8aade9ba5.jpg');
+	}
+
+}

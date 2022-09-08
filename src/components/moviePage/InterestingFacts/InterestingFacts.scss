@@ -1,0 +1,43 @@
+$color-light-text: rgba(0, 0, 0, 0.4);
+$color-dark-text: #333;
+$color-titles: #000;
+$color-brand: #f60;
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.interesting-facts {
+	font-size: 16px;
+	line-height: 22px;
+	width: 100%;
+	text-align: justify;
+}
+
+.interesting-fact {
+	margin-top: 20px;
+	display: flex;
+	gap: 30px;
+
+	&__title {
+		display: block;
+		font-size: 24px;
+		line-height: 30px;
+		color: #000;
+		font-weight: 700;
+		text-align: left;
+		padding-bottom: 8px;
+	}
+
+	&__marker {
+		display: block;
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background-color: $color-light-text;
+		flex: 0 0 10px;
+		margin-top: 5px;
+	}
+}
