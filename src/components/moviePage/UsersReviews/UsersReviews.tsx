@@ -52,7 +52,7 @@ export const UsersReviews: FC<MovieIdProps> = ({ movieId }) => {
   };
 
   const redirectToAutorization = () => {
-    navigate('/rsclone/autorization');
+    navigate('/autorization');
   };
 
   const handleWriteReviewBtn = () => {

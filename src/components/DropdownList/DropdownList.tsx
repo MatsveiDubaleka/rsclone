@@ -51,7 +51,7 @@ const DropdownList = ({ movies }: IDropdownMovieList) => {
         {movies.map((movie: IDropdownMovie): JSX.Element => {
           return (
             <>
-              <NavLink to={`/rsclone/movie/${movie.filmId}`}>
+              <NavLink to={`/movie/${movie.filmId}`}>
                 <DropdownMovieItem
                   nameRu={movie.nameRu}
                   nameEn={movie.nameEn}

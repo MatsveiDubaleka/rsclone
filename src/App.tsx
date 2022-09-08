@@ -18,28 +18,22 @@ const App = () => {
   return (
     <div className='App'>
       <Routes>
-        <Route path='/rsclone/autorization' element={<Authorization />} />
+        <Route path='/autorization' element={<Authorization />} />
       </Routes>
-      {location === '/rsclone/autorization' ? <></> : <Header />}
+      {location === '/autorization' ? <></> : <Header />}
       <Routes>
-        <Route path='/rsclone/' element={<MainPageLayout />} />
-        <Route path='/rsclone/movies' element={<Placeholder />} />
-        <Route path='/rsclone/tv-series' element={<Placeholder />} />
-        <Route path='/rsclone/searchPage' element={<SearchPageLayout />} />
-        <Route path='/rsclone/movie/:id' element={<MoviePageLayout />} />
-        <Route path='/rsclone/s' element={<AdvancedSearchPageLayout />} />
-        <Route
-          path='/rsclone/my-account/*'
-          element={<UserAccountPageLayout />}
-        />
-        <Route
-          path='/rsclone/admin-account/*'
-          element={<AdminAccountPageLayout />}
-        />
-        <Route path='/rsclone/recommend' element={<MoviesListsPageLayout />} />
-        <Route path='/rsclone/new' element={<MoviesListsPageLayout />} />
+        <Route path='/' element={<MainPageLayout />} />
+        <Route path='/movies' element={<Placeholder />} />
+        <Route path='/tv-series' element={<Placeholder />} />
+        <Route path='/searchPage' element={<SearchPageLayout />} />
+        <Route path='/movie/:id' element={<MoviePageLayout />} />
+        <Route path='/s' element={<AdvancedSearchPageLayout />} />
+        <Route path='/my-account/*' element={<UserAccountPageLayout />} />
+        <Route path='/admin-account/*' element={<AdminAccountPageLayout />} />
+        <Route path='/recommend' element={<MoviesListsPageLayout />} />
+        <Route path='/new' element={<MoviesListsPageLayout />} />
       </Routes>
-      {location === '/rsclone/autorization' ? <></> : <Footer />}
+      {location === '/autorization' ? <></> : <Footer />}
     </div>
   );
 };

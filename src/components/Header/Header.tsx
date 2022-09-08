@@ -51,7 +51,7 @@ const Header = () => {
   return (
     <div className='header-wrapper'>
       <header className='header'>
-        <Link to={'/rsclone'}>
+        <Link to={''}>
           <div className='logo'>
             <h1>KINOPOISK</h1>
           </div>
@@ -105,7 +105,7 @@ const Header = () => {
             </Link>
             <span className='flag' id='flag' hidden></span>
             <Link
-              to={`/rsclone/autorization`}
+              to={`/autorization`}
               className={`enter-link ${isLogIn ? 'hidden' : ''}`}
             >
               <p>Вход</p>

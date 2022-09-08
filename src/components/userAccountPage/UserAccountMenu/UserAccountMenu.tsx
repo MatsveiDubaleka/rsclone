@@ -5,22 +5,22 @@ import { INavItemDataArray } from '../../SideNavigation/types';
 const userAccountNavData: INavItemDataArray = [
   {
     title: 'Мой профиль',
-    path: '/rsclone/my-account',
+    path: '/my-account',
     icon: 'home-menu-icon',
   },
   {
     title: 'Буду смотреть',
-    path: '/rsclone/my-account/to-watch',
+    path: '/my-account/to-watch',
     icon: 'will-watch-icon',
   },
   {
     title: 'Мои оценки',
-    path: '/rsclone/my-account/watched',
+    path: '/my-account/watched',
     icon: 'my-ratings-icon',
   },
   {
     title: 'Мои рецензии',
-    path: '/rsclone/my-account/my-reviews',
+    path: '/my-account/my-reviews',
     icon: 'my-reviews-icon',
   },
 ];

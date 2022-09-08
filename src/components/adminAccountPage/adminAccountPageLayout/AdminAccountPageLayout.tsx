@@ -10,11 +10,8 @@ export const AdminAccountPageLayout = () => {
       <AdminAccountMenu />
       <div className='admin-account-page__content'>
         <Routes>
-          <Route path='/rsclone/' element={<AdminData />} />
-          <Route
-            path='/rsclone/trailers'
-            element={<AdminAccountTrailersList />}
-          />
+          <Route path='/' element={<AdminData />} />
+          <Route path='/trailers' element={<AdminAccountTrailersList />} />
         </Routes>
       </div>
     </main>

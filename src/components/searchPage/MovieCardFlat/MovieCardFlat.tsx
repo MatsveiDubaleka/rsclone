@@ -57,7 +57,7 @@ const MovieCardFlat: FC<IDropdownMovie> = ({
         </div>
       </div>
       <div className='movie-card-flat__info'>
-        <NavLink to={`/rsclone/movie/${filmId ? filmId : kinopoiskId}`}>
+        <NavLink to={`/movie/${filmId ? filmId : kinopoiskId}`}>
           <h3 className='movie-card-flat__title-ru'>{nameRu}</h3>
         </NavLink>
         <div className='movie-card-flat__info-main'>

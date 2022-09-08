@@ -7,7 +7,7 @@ export const UserData = () => {
 
   const handleLogOutBtn = () => {
     localStorage.removeItem('username');
-    navigation('/rsclone/autorization');
+    navigation('/autorization');
     localStorage.removeItem('visitedMovies');
   };
 

@@ -13,7 +13,7 @@ const MovieCard: FC<IMovieCard> = ({
   kinopoiskId,
 }) => {
   return (
-    <NavLink to={`/rsclone/movie/${kinopoiskId}`}>
+    <NavLink to={`/movie/${kinopoiskId}`}>
       <div className='movie-card' id={`${kinopoiskId}`}>
         <div className='movie-card__poster'>
           <div

@@ -109,9 +109,7 @@ const MovieVideo = () => {
       </div>
       <div className='movie-video__about'>
         <NavLink
-          to={`/rsclone/movie/${
-            trailer.filmId ? trailer.filmId : trailer.kinopoiskId
-          }`}
+          to={`/movie/${trailer.filmId ? trailer.filmId : trailer.kinopoiskId}`}
         >
           <div className='movie-video__title'>
             {trailer.nameRu ? trailer.nameRu : trailer.nameEn}

@@ -12,13 +12,10 @@ export const UserAccountPageLayout = () => {
       <UserAccountMenu />
       <div className='user-account-page__content'>
         <Routes>
-          <Route path='/rsclone/' element={<UserData />} />
-          <Route
-            path='/rsclone/to-watch'
-            element={<UserAccountToWatchList />}
-          />
-          <Route path='/rsclone/watched' element={<UserAccountWatchedList />} />
-          <Route path='/rsclone/my-reviews' element={<UserAccountReviews />} />
+          <Route path='/' element={<UserData />} />
+          <Route path='/to-watch' element={<UserAccountToWatchList />} />
+          <Route path='/watched' element={<UserAccountWatchedList />} />
+          <Route path='/my-reviews' element={<UserAccountReviews />} />
         </Routes>
       </div>
     </main>
