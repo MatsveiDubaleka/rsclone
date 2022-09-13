@@ -4,17 +4,17 @@ import { INavItemDataArray } from '../../SideNavigation/types';
 const adminAccountNavData: INavItemDataArray = [
   {
     title: 'Мой профиль',
-    path: '/rsclone/admin-account',
+    path: '/admin-account',
     icon: 'home-menu-icon',
   },
   {
     title: 'Управление трейлером',
-    path: '/rsclone/admin-account/trailers',
+    path: '/admin-account/trailers',
     icon: 'movie-menu-icon',
   },
   {
     title: 'Управление пользователями',
-    path: '/rsclone/admin-account/users',
+    path: '/admin-account/users',
     icon: 'tvseries-menu-icon',
   },
 ];
