@@ -3,11 +3,6 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import "./AdvancedSearchForm.scss";
 
-// type SearchData = {
-//   items: Movie | undefined,
-//   total: number
-// }
-
 type GenreOptionsTypes = {
     id: number;
     genre: string;

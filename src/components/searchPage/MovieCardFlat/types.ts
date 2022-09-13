@@ -21,7 +21,6 @@ export interface IDropdownMovie {
 	],
 }
 
-
 export interface IDropdownMovieList {
 	movies: IDropdownMovie[]
 }

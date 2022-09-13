@@ -5,7 +5,7 @@ import { SetStateAction, useState } from 'react';
 export const MovieRatingSet = () => {
 	const[newRating, setRating] = useState("");
 
-	const oldRating = 9; // TODO: Take from api
+	const oldRating = 9;
 
 	let ratingStyles = "movie-rating-set__old-rating";
 
@@ -39,4 +39,3 @@ export const MovieRatingSet = () => {
 		</div>
 	)
 }
-

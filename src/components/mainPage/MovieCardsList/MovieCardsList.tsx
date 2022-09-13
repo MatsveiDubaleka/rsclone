@@ -81,4 +81,5 @@ const MovieCardsList: FC<MovieCardList> = ({title, url, listType}) => {
   )
 }
 
-export default MovieCardsList; 
+export default MovieCardsList;
+ 

@@ -15,7 +15,6 @@ const MovieCardFlat: FC<IDropdownMovie> = ({
   ratingKinopoisk = NaN,
   filmId,
   kinopoiskId,
-  filmLength,
   genres,
   countries,
 }) => {

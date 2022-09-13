@@ -4,7 +4,6 @@ import { getData } from '../../../utils/config';
 import {
   getUsernameFromLocalStorage,
   getUserReviewsByMovie,
-  getUserReviewsByUser,
 } from '../../../utils/utilsFunctions';
 import { MovieIdProps } from '../MoviePageLayout/MoviePageLayout';
 import { Review, UserReviewCard } from '../UserReviewCard/UserReviewCard';
@@ -12,7 +11,7 @@ import { WriteReviewForm } from '../WriteReviewForm/WriteReviewForm';
 import './UsersReviews.scss';
 
 type ReviewsData = {
-  items: any; // не смогла это затипизировать
+  items: any;
   total: number;
   totalNegativeReviews: number;
   totalNeutralReviews: number;

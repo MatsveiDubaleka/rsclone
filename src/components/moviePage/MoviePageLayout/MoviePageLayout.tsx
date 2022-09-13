@@ -23,4 +23,4 @@ export const MoviePageLayout = () => {
 			</div>
 		</main>
 	)
-} 
+}
