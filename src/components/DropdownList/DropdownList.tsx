@@ -41,6 +41,7 @@ const DropdownMovieItem = ({
 };
 
 const DropdownList = ({ movies }: IDropdownMovieList) => {
+  
   const navigate = useNavigate();
 
   movies.splice(5);
