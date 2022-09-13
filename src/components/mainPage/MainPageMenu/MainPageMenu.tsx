@@ -5,17 +5,17 @@ import { INavItemDataArray } from '../../SideNavigation/types';
 const mainPageNavData: INavItemDataArray = [
   {
     title: 'Главная',
-    path: '/',
+    path: '/rsclone/',
     icon: 'home-menu-icon',
   },
   {
     title: 'Фильмы',
-    path: '/movies',
+    path: '/rsclone/movies',
     icon: 'movie-menu-icon',
   },
   {
     title: 'Сериалы',
-    path: '/tv-series',
+    path: '/rsclone/tv-series',
     icon: 'tvseries-menu-icon',
   },
 ];

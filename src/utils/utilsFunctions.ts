@@ -1,5 +1,3 @@
-import { useLocation } from "react-router";
-
 export const getClassForRaiting = (rating: number) => {
 	return rating < 5 ? 'negative' : rating > 7 ? 'positive' : '';
 } 
@@ -22,7 +20,6 @@ export async function getUserReviewsByMovie(kinopoiskId: number) {
 	const userReviews : any[] = reviews.filter((review) => review.kinopoiskId === kinopoiskId);
 	return userReviews;
 }
-
 
 type Body = {
   title: string,
