@@ -87,10 +87,6 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
   const [distributions, setDistributions] = useState();
 
   useEffect(() => {
-    getData(`v2.2/films/${movieId}/`, setMovie);
-  }, [setMovie]);
-
-  useEffect(() => {
     getData(`v1/staff?filmId=${movieId}`, setPersons);
   }, [setPersons]);
 
@@ -107,6 +103,10 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
   useEffect(() => {
     setTimeout(setToLocalStorage, 1500);
   }, [])
+
+  useEffect(() => {
+    getData(`v2.2/films/${movieId}/`, setMovie);
+  }, [setMovie]);
 
   let ratingClass = '';
   if (movie?.ratingKinopoisk) {
@@ -127,7 +127,7 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
           <div className="movie-info__trailer" style={{ backgroundImage: `url(${movie?.coverUrl})`}}></div>
         </div>
         <div className="movie-info__column-2">
-          <h2 className="movie-info__title">{ movie?.nameRu } {`(${movie?.year})`}</h2> :
+          <h2 className="movie-info__title">{ movie?.nameRu } {`(${movie?.year})`}</h2>
           <div className="movie-info__buttons">
             <button className="movie-info__to-watch-btn"></button>
             <button onClick={(): void => elem ? setElem(undefined) : setElem(<MovieRatingSet />)} 
@@ -149,7 +149,7 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
                   </>
               }
             <p className="movie-info__director">Режиссёр</p>
-            <p>{ filterPersons(persons, "DIRECTOR")?.map((item : Person) => item.nameRu)}</p>
+            <p>{ filterPersons(persons, "DIRECTOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
             <p>Сценарий</p>
             <p>{filterPersons(persons, "WRITER")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
             <p>Продюсер</p>
