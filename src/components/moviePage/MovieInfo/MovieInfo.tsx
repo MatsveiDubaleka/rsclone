@@ -149,17 +149,17 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
                   </>
               }
             <p className="movie-info__director">Режиссёр</p>
-            <p>{ filterPersons(persons, "DIRECTOR")?.map((item : Person) => item.nameRu).join(', ')}</p>
+            <p>{ filterPersons(persons, "DIRECTOR")?.map((item : Person) => item.nameRu !== "" ? item.nameRu : item.nameEn).join(', ')}</p>
             <p>Сценарий</p>
-            <p>{filterPersons(persons, "WRITER")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
+            <p>{filterPersons(persons, "WRITER")?.map((item : Person) => item.nameRu !== "" ? item.nameRu : item.nameEn).join(', ') || '-'}</p>
             <p>Продюсер</p>
-            <p>{filterPersons(persons, "PRODUCER")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
+            <p>{filterPersons(persons, "PRODUCER")?.map((item : Person) => item.nameRu !== "" ? item.nameRu : item.nameEn).join(', ') || '-'}</p>
             <p>Оператор</p>
-            <p>{filterPersons(persons, "OPERATOR")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
+            <p>{filterPersons(persons, "OPERATOR")?.map((item : Person) => item.nameRu !== "" ? item.nameRu : item.nameEn).join(', ') || '-'}</p>
             <p>Композитор</p>
-            <p>{filterPersons(persons, "COMPOSER")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
+            <p>{filterPersons(persons, "COMPOSER")?.map((item : Person) => item.nameRu !== "" ? item.nameRu : item.nameEn).join(', ') || '-'}</p>
             <p>Монтаж</p>
-            <p>{filterPersons(persons, "EDITOR")?.map((item : Person) => item.nameRu).join(', ') || '-'}</p>
+            <p>{filterPersons(persons, "EDITOR")?.map((item : Person) => item.nameRu !== "" ? item.nameRu : item.nameEn).join(', ') || '-'}</p>
             {budget?.items.length !== 0 && 
               <>
                 <p>Бюджет</p>
