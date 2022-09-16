@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getClassForRaiting } from '../../utils/utilsFunctions';
 import { searchWord } from '../Header/Header';
 import './DropdownList.scss';
@@ -52,7 +52,7 @@ const DropdownList = ({ movies }: IDropdownMovieList) => {
         {movies.map((movie: IDropdownMovie): JSX.Element => {
           return (
             <>
-              <NavLink to={`/movie/${movie.filmId}`}>
+              <Link to={`/movie/${movie.filmId}`}>
                 <DropdownMovieItem
                   nameRu={movie.nameRu}
                   nameEn={movie.nameEn}
@@ -61,7 +61,7 @@ const DropdownList = ({ movies }: IDropdownMovieList) => {
                   posterUrlPreview={movie.posterUrlPreview}
                   key={`${movie.filmId}`}
                 ></DropdownMovieItem>
-              </NavLink>
+              </Link>
             </>
           );
         })}
