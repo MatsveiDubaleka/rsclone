@@ -63,7 +63,7 @@ const Authorization = () => {
     <div className='authorization-wrapper'>
       <div className='authorization'>
         <div className='authorization-card'>
-          <Link to={''}>
+          <Link to={'/'}>
             <button className='authorization-card__button-back'></button>
           </Link>
           <div className='authorization-card__logo-img'></div>

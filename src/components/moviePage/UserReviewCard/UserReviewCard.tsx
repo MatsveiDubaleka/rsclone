@@ -1,7 +1,6 @@
 import { FC, useState } from "react";
 import "./UserReviewCard.scss";
 
-
 export type Review = {
 	author: string,
 	date: string,

@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getClassForRaiting } from '../../utils/utilsFunctions';
 import { searchWord } from '../Header/Header';
 import './DropdownList.scss';
@@ -41,6 +41,7 @@ const DropdownMovieItem = ({
 };
 
 const DropdownList = ({ movies }: IDropdownMovieList) => {
+  
   const navigate = useNavigate();
 
   movies.splice(5);
@@ -51,16 +52,16 @@ const DropdownList = ({ movies }: IDropdownMovieList) => {
         {movies.map((movie: IDropdownMovie): JSX.Element => {
           return (
             <>
-              <NavLink to={`/movie/${movie.filmId}`}>
+              <Link to={`/movie/${movie.filmId}`}>
                 <DropdownMovieItem
                   nameRu={movie.nameRu}
                   nameEn={movie.nameEn}
                   year={movie.year}
                   rating={movie.rating}
                   posterUrlPreview={movie.posterUrlPreview}
-                  key={`dropdown-movie-item-${movie.filmId}`}
+                  key={`${movie.filmId}`}
                 ></DropdownMovieItem>
-              </NavLink>
+              </Link>
             </>
           );
         })}
