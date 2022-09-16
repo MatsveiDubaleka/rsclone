@@ -59,7 +59,7 @@ const DropdownList = ({ movies }: IDropdownMovieList) => {
                   year={movie.year}
                   rating={movie.rating}
                   posterUrlPreview={movie.posterUrlPreview}
-                  key={`dropdown-movie-item-${movie.filmId}`}
+                  key={`${movie.filmId}`}
                 ></DropdownMovieItem>
               </NavLink>
             </>
