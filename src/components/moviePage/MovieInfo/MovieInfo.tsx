@@ -101,12 +101,12 @@ export const MovieInfo: FC<MovieIdProps> = ({ movieId }) => {
   }, [setDistributions]);
 
   useEffect(() => {
-    setTimeout(setToLocalStorage, 1500);
-  }, [])
-
-  useEffect(() => {
     getData(`v2.2/films/${movieId}/`, setMovie);
   }, [setMovie]);
+
+  useEffect(() => {
+    setTimeout(setToLocalStorage, 1500);
+  }, [])
 
   let ratingClass = '';
   if (movie?.ratingKinopoisk) {
