@@ -22,7 +22,7 @@ const MovieCardFlat: FC<IDropdownMovie> = ({
   const [elem, setElem] = useState(false);
 
   const infoMainArray = [nameEn, nameRu, year]
-    .filter((item) => item !== undefined && item !== null)
+    .filter((item) => item !== undefined && item !== null && item !== "")
     .join(', '); // эти переменные, чтобы не было висячих запятых в верстке
   const countriesArray = countries
     .slice(0, 5)
